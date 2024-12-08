@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
-import { useGetAdminDashboard } from "@/hooks/dashboard";
+import { useGetAdminDashboard } from "@/src/hooks/dashboard";
 import React from "react";
 import {
   FaUsers,
@@ -10,7 +10,7 @@ import {
   FaShoppingCart,
   FaStar,
   FaDollarSign,
-} from "react-icons/fa"; // Importing React icons
+} from "react-icons/fa";
 
 const Dashboard = () => {
   const { data: { data } = {}, isLoading, error } = useGetAdminDashboard();
@@ -18,7 +18,6 @@ const Dashboard = () => {
   if (isLoading) return <div>Loading...</div>;
   if (error) return <div>Error loading dashboard data.</div>;
 
-  // Destructure the data for easy access
   const {
     totalEarnings,
     totalUsers,
@@ -33,7 +32,6 @@ const Dashboard = () => {
     <div className="p-8">
       <h1 className="text-3xl font-semibold mb-8">Admin Dashboard</h1>
 
-      {/* Total Earnings Section */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
         <div className="bg-white p-6 rounded-lg shadow-md flex items-center">
           <FaDollarSign className="text-4xl text-green-600 mr-4" />
@@ -45,7 +43,6 @@ const Dashboard = () => {
           </div>
         </div>
 
-        {/* Total Users Section */}
         <div className="bg-white p-6 rounded-lg shadow-md flex items-center">
           <FaUsers className="text-4xl text-blue-600 mr-4" />
           <div>
@@ -54,7 +51,6 @@ const Dashboard = () => {
           </div>
         </div>
 
-        {/* Total Products Section */}
         <div className="bg-white p-6 rounded-lg shadow-md flex items-center">
           <FaBox className="text-4xl text-purple-600 mr-4" />
           <div>
@@ -64,7 +60,6 @@ const Dashboard = () => {
         </div>
       </div>
 
-      {/* Counts for Customers, Vendors, Orders, and Reviews */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
         <div className="bg-white p-6 rounded-lg shadow-md flex items-center">
           <FaUsers className="text-4xl text-indigo-600 mr-4" />
