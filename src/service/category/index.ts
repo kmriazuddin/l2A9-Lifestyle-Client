@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 "use server";
 
-import axiosInstance from "@/src/lib/axiosInstance/axiosInstance";
+import axiosInstance from "@/lib/axiosInstance/axiosInstance";
 import { revalidateTag } from "next/cache";
 
 export const getAllCategory = async () => {

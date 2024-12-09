@@ -1,10 +1,10 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 "use server";
+import config from "@/config";
+import axiosInstance from "@/lib/axiosInstance/axiosInstance";
 import { jwtDecode } from "jwt-decode";
 
 import { cookies } from "next/headers";
-import axiosInstance from "@/src/lib/axiosInstance/axiosInstance";
-import config from "@/src/config";
 
 export const loginUser = async (userData: {
   email: string;

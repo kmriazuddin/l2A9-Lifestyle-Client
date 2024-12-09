@@ -1,4 +1,4 @@
-import { cartItemCalculation } from "@/src/lib/utils/cartPriceCalculation";
+import { cartItemCalculation } from "@/lib/utils/cartPriceCalculation";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 export interface ICartItem {
