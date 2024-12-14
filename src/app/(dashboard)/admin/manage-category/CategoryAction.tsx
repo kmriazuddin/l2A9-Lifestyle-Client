@@ -1,12 +1,12 @@
 "use client";
 
+import CButton from "@/components/ui_component/common/Form/CButton";
+import CForm from "@/components/ui_component/common/Form/CForm";
+import CInput from "@/components/ui_component/common/Form/CInput";
+import { useAddCategory } from "@/hooks/category.hook";
 import React from "react";
 import { FieldValues } from "react-hook-form";
 import { toast } from "sonner";
-import CButton from "@/src/components/ui_component/common/Form/CButton";
-import CForm from "@/src/components/ui_component/common/Form/CForm";
-import CInput from "@/src/components/ui_component/common/Form/CInput";
-import { useAddCategory } from "@/src/hooks/category.hook";
 import DeleteCategory from "./DeleteCategory";
 import EditCategory from "./EditCategory";
 

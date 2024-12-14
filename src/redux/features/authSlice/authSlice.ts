@@ -9,6 +9,7 @@ interface IAuthState {
   token: string | null;
 }
 
+// Define the initial state using that type
 const initialState: IAuthState = {
   user: null,
   token: null,

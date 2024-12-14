@@ -1,11 +1,17 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-
+import { IApiResponse } from "@/interface/apiResponse.interface";
+import { IOrder } from "@/interface/order.interface";
+import { queryClient } from "@/providers/Provider";
+import {
+  getAllOrder,
+  getPendingOrder,
+  getSigleOrder,
+  getSigleUserAllOrder,
+  makePayment,
+  updateOrder,
+} from "@/services/order";
+import { getVendorSingleShopOrders } from "@/services/shopService";
 import { useMutation, useQuery } from "@tanstack/react-query";
-import { IApiResponse } from "../interface/apiResponse.interface";
-import { IOrder } from "../interface/order.interface";
-import { queryClient } from "../providers/Providers";
-import { getVendorSingleShopOrders } from "../service/shopService";
-import { getAllOrder, getPendingOrder, getSingleOrder, getSingleUserAllOrder, makePayment, updateOrder } from "../service/order";
 
 export const useMakeOrder = () => {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -14,10 +20,10 @@ export const useMakeOrder = () => {
   });
 };
 
-export const useSingleUserAllOrder = (currentPage: number) => {
+export const useSigleUserAllOrder = (currentPage: number) => {
   return useQuery<IApiResponse<IOrder[]>>({
     queryKey: ["user-all-order", currentPage],
-    queryFn: async () => await getSingleUserAllOrder(currentPage),
+    queryFn: async () => await getSigleUserAllOrder(currentPage),
   });
 };
 
@@ -25,7 +31,7 @@ export const useSingleOrder = (id: string) => {
   return useQuery<IApiResponse<IOrder>>({
     enabled: !!id,
     queryKey: ["user-single-order", id],
-    queryFn: async () => await getSingleOrder(id),
+    queryFn: async () => await getSigleOrder(id),
   });
 };
 

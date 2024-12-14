@@ -1,15 +1,5 @@
 "use client";
-
 import React, { useContext } from "react";
-import Link from "next/link";
-import Image from "next/image";
-import { FaCartPlus } from "react-icons/fa";
-import AverageRating from "../Rating/AverageRating";
-import CartConflict from "../CartConflict/CartConflict";
-import { IProduct } from "@/interface/product.interface";
-import { useAppDispatch } from "@/redux/hooks";
-import { addItemToCart, ICartItem } from "@/redux/features/cartSlice/cartSlice";
-import { AuthContext } from "@/providers/AuthProvider";
 import {
   Card,
   CardContent,
@@ -17,7 +7,18 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+
 import { Button } from "@/components/ui/button";
+import Link from "next/link";
+import { IProduct } from "@/interface/product.interface";
+import Image from "next/image";
+import { FaCartPlus } from "react-icons/fa";
+import { useAppDispatch } from "@/redux/hooks";
+import { addItemToCart, ICartItem } from "@/redux/features/cartSlice/cartSlice";
+import AvarageRating from "../Rating/AvarageRating";
+
+import CartConflict from "../cartConfilct/CartConflict";
+import { AuthContext } from "@/providers/AuthProvider";
 
 const AllProduct = ({ data }: { data: IProduct[] }) => {
   const dispatch = useAppDispatch();
@@ -89,10 +90,10 @@ const AllProduct = ({ data }: { data: IProduct[] }) => {
                 </Button>
               </div>
               <div className="flex justify-center">
-                <AverageRating
+                <AvarageRating
                   rating={option?.averageRating ? option?.averageRating : 0}
                   width={55}
-                ></AverageRating>
+                ></AvarageRating>
               </div>
             </CardContent>
           </Card>

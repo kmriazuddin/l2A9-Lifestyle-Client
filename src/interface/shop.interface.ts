@@ -8,9 +8,9 @@ export interface IShop {
   location: string;
   images: string[];
   vendorId: string;
-  createdAt: string;
-  updatedAt: string;
-  products?: IProduct[];
+  createdAt: string; // ISO date string
+  updatedAt: string; // ISO date string
+  products?: IProduct[]; // Array of products
   followers?: IFollower[];
   vendor: IVendor;
 }

@@ -1,4 +1,4 @@
-import { ICartItem } from "@/src/redux/features/cartSlice/cartSlice";
+import { ICartItem } from "@/redux/features/cartSlice/cartSlice";
 
 export const cartItemCalculation = (
   cartItems: ICartItem[],

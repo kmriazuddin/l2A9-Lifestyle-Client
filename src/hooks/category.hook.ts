@@ -1,14 +1,13 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-
-import { useMutation, useQuery } from "@tanstack/react-query";
-import { IApiResponse } from "../interface/apiResponse.interface";
-import { ICategory } from "../interface/category.interface";
+import { IApiResponse } from "@/interface/apiResponse.interface";
+import { ICategory } from "@/interface/category.interface";
 import {
-  addCategory,
+  addlCategory,
   deleteCategory,
   getAllCategory,
   updateCategory,
-} from "../service/category";
+} from "@/services/category";
+import { useMutation, useQuery } from "@tanstack/react-query";
 
 export const useAllCategory = () => {
   return useQuery<IApiResponse<ICategory[]>>({
@@ -19,7 +18,7 @@ export const useAllCategory = () => {
 
 export const useAddCategory = () => {
   return useMutation<any, Error, string, unknown>({
-    mutationFn: async (name: string) => await addCategory(name),
+    mutationFn: async (name: string) => await addlCategory(name),
   });
 };
 

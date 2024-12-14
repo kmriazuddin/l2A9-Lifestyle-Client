@@ -1,12 +1,12 @@
 import React from "react";
+import { Modalbox } from "../modal/Modalbox";
 import CForm from "../Form/CForm";
 import CInput from "../Form/CInput";
-import { FieldValues } from "react-hook-form";
-import { toast } from "sonner";
-import { ModalBox } from "../modal/ModalBox";
 import { CRating } from "../Form/CRating";
-import { DialogClose } from "@/src/components/ui/dialog";
-import { useAddRating } from "@/src/hooks/rating.hook";
+import { DialogClose } from "@/components/ui/dialog";
+import { FieldValues } from "react-hook-form";
+import { useAddRating } from "@/hooks/rating.hook";
+import { toast } from "sonner";
 
 const ReviewAction = ({
   productId,
@@ -31,7 +31,7 @@ const ReviewAction = ({
   };
 
   return (
-    <ModalBox title="Give Review" btnText="Give Review">
+    <Modalbox title="Give Review" btnText="Give Review">
       <CForm onFromSubmit={onFromSubmit}>
         <div className="grid gap-4">
           <CInput name="comment" label="Comment"></CInput>
@@ -45,7 +45,7 @@ const ReviewAction = ({
           </DialogClose>
         </div>
       </CForm>
-    </ModalBox>
+    </Modalbox>
   );
 };
 

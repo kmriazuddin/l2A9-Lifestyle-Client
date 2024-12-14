@@ -1,19 +1,19 @@
 "use client";
-
 import React, { useEffect, useState } from "react";
-import { useVendorShop, useVendorSingleShop } from "@/src/hooks/shop.hook";
+import ShopDetails from "./ShopDetails";
+import { useVendorShop, useVendorSingleShop } from "@/hooks/shop.hook";
+
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/src/components/ui/select";
-import ShopDetails from "./ShowDetails";
+} from "@/components/ui/select";
 
 const Shop = () => {
   const { data } = useVendorShop();
-  const [selected, setSelected] = useState(data?.data[0].shopId || "");
+  const [selected, setSelected] = useState(data?.data[0]?.shopId || "");
   const { data: { data: singleShop } = {} } = useVendorSingleShop(selected);
 
   useEffect(() => {

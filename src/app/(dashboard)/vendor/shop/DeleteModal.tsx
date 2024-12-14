@@ -1,6 +1,6 @@
-import { DialogClose } from "@/src/components/ui/dialog";
-import { ModalBox } from "@/src/components/ui_component/common/modal/ModalBox";
-import { useDeleteProduct } from "@/src/hooks/product.hook";
+import { DialogClose } from "@/components/ui/dialog";
+import { Modalbox } from "@/components/ui_component/common/modal/Modalbox";
+import { useDeleteProduct } from "@/hooks/product.hook";
 import React from "react";
 import { toast } from "sonner";
 
@@ -18,7 +18,7 @@ const DeleteModal = ({ id }: { id: string }) => {
     });
   };
   return (
-    <ModalBox
+    <Modalbox
       size="icon"
       variant="outline"
       btncss="hover:text-red-500"
@@ -48,7 +48,7 @@ const DeleteModal = ({ id }: { id: string }) => {
           <p className="bg-gray-950 text-white rounded-md w-20 py-2">No</p>
         </DialogClose>
       </div>
-    </ModalBox>
+    </Modalbox>
   );
 };
 

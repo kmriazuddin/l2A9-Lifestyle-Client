@@ -6,8 +6,7 @@ import {
   PaginationLink,
   PaginationNext,
   PaginationPrevious,
-} from "@/src/components/ui/pagination";
-
+} from "@/components/ui/pagination";
 type TMeta = {
   limit: number;
   page: number;
@@ -32,12 +31,17 @@ export function DynamicPagination({ meta, onPageChange }: PaginationProps) {
     <div className="mb-6">
       <Pagination>
         <PaginationContent>
+          {/* Previous Button */}
           <PaginationItem>
-            <PaginationPrevious onClick={() => handlePageChange(page - 1)} />
+            <PaginationPrevious
+              onClick={() => handlePageChange(page - 1)}
+              //  disabled={page === 1}
+            />
           </PaginationItem>
 
+          {/* Page Numbers */}
           {Array.from({ length: totalPage }, (_, idx) => idx + 1)
-            .slice(Math.max(0, page - 2), page + 1)
+            .slice(Math.max(0, page - 2), page + 1) // Show nearby pages
             .map((pg) => (
               <PaginationItem key={pg}>
                 <PaginationLink
@@ -50,12 +54,15 @@ export function DynamicPagination({ meta, onPageChange }: PaginationProps) {
               </PaginationItem>
             ))}
 
+          {/* Ellipsis for Skipped Pages */}
           {totalPage > 3 && page < totalPage - 2 && <PaginationEllipsis />}
 
+          {/* Next Button */}
           <PaginationItem>
             <PaginationNext
               href="#"
               onClick={() => handlePageChange(page + 1)}
+              // disabled={page === totalPage}
             />
           </PaginationItem>
         </PaginationContent>

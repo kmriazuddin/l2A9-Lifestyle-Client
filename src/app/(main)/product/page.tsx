@@ -1,17 +1,18 @@
 "use client";
-
 import React, { useContext, useEffect, useState } from "react";
 import AllProduct from "../../../components/ui_component/common/AllProduct/AllProduct";
+
+import { useAllProduct } from "@/hooks/product.hook";
+import { useAllCategory } from "@/hooks/category.hook";
+import { useFilterSortSearch } from "@/lib/utils/hook/useFilterSortSearch";
+import SearchSortFilter from "@/components/ui_component/common/searchSortFilter/SearchSortFilter";
+
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
-import { useFilterSortSearch } from "@/src/lib/utils/hook/useFilterSortSearch";
-import { AuthContext } from "@/src/providers/AuthProvider";
-import { useAllCategory } from "@/src/hooks/category.hook";
-import { useAllProduct } from "@/src/hooks/product.hook";
-import { useAppDispatch, useAppSelector } from "@/src/redux/hooks";
-import { setCategoryId as setCId } from "@/src/redux/features/cartSlice/cartSlice";
-import SearchSortFilter from "@/src/components/ui_component/common/searchSortFilter/SearchSortFilter";
-import { DynamicPagination } from "@/src/components/ui_component/common/Pagination/DynamicPagination";
+import { useAppDispatch, useAppSelector } from "@/redux/hooks";
+import { setCategoryId as setCId } from "@/redux/features/cartSlice/cartSlice";
+import { AuthContext } from "@/providers/AuthProvider";
+import { DynamicPagination } from "@/components/ui_component/common/Pagination/DynamicPagination";
 
 const Products = () => {
   const {

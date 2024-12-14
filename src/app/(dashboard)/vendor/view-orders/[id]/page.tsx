@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import OrderDetails from "@/src/components/ui_component/common/Order/OrderDetails";
+import OrderDetails from "@/components/ui_component/common/Order/OrderDetails";
 import React from "react";
 
 const page = async ({ params }: { params: any }) => {

@@ -1,12 +1,17 @@
 "use client";
 
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import Image from "next/image";
 import { useMediaQuery } from "react-responsive";
+import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
-import Link from "next/link";
 import { useFlashProduct } from "@/hooks/product.hook";
-import { Button } from "../../ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "../../ui/card";
+import Link from "next/link";
 
 const FlashSale = () => {
   const { data: { data: product } = {} } = useFlashProduct();
@@ -14,9 +19,10 @@ const FlashSale = () => {
   const isMobile = useMediaQuery({ maxWidth: 768 });
 
   const dataToDisplay = isMobile ? product?.slice(0, 6) : product;
+
   return (
-    <div className="">
-      <div className="w-full justify-between h-10 flex items-center bg-black text-white px-4">
+    <div>
+      <div className="w-full justify-between h-10 flex items-center bg-pink-500 text-white px-4">
         <p> Flash Sale</p>
         <Button className="text-white" variant={"link"}>
           <Link href={"/flashsale"}>View all</Link> <ArrowRight></ArrowRight>

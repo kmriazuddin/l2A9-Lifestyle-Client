@@ -1,15 +1,14 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-
-import { useMutation, useQuery } from "@tanstack/react-query";
-import { FieldValues } from "react-hook-form";
-import { IApiResponse } from "../interface/apiResponse.interface";
-import { IReview } from "../interface/review.interface";
-import { queryClient } from "../providers/Providers";
+import { IApiResponse } from "@/interface/apiResponse.interface";
+import { IReview } from "@/interface/review.interface";
+import { queryClient } from "@/providers/Provider";
 import {
   addReview,
-  getReviewByShop,
+  getReviewbyShop,
   replyReview,
-} from "../service/ratingService";
+} from "@/services/ratingService";
+import { useMutation, useQuery } from "@tanstack/react-query";
+import { FieldValues } from "react-hook-form";
 
 export const useAddRating = () => {
   return useMutation<any, Error, FieldValues, unknown>({
@@ -28,6 +27,6 @@ export const useReplyRating = () => {
 export const useGetReviewByShop = (page: number) => {
   return useQuery<IApiResponse<IReview[]>>({
     queryKey: ["get-rating-by-shop", page],
-    queryFn: async () => await getReviewByShop(page),
+    queryFn: async () => await getReviewbyShop(page),
   });
 };

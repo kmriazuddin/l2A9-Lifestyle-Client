@@ -1,9 +1,8 @@
 "use client";
-
+import { useAllVendorShop } from "@/hooks/shop.hook";
 import React, { useState } from "react";
-import { useAllVendorShop } from "@/src/hooks/shop.hook";
-import ShopTable from "./shopTable";
-import { DynamicPagination } from "@/src/components/ui_component/common/Pagination/DynamicPagination";
+import ShopTable from "./ShopTable";
+import { DynamicPagination } from "@/components/ui_component/common/Pagination/DynamicPagination";
 
 const ManageShop = () => {
   const [currentPage, setCurrentPage] = useState(1);

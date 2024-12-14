@@ -1,8 +1,8 @@
-import config from "@/src/config";
+import config from "@/config";
 
 export const uploadImagesToCloudinary = async (files: FileList) => {
   try {
-    if (!files || files.length === 0) throw new Error("No files provided");
+    if (!files || files.length === 0) throw new Error("No Files Provided!");
 
     const { cloudinary_preset, cloudinary_cloudname } = config;
     const uploadedUrls: string[] = [];
@@ -20,13 +20,13 @@ export const uploadImagesToCloudinary = async (files: FileList) => {
         }
       );
 
-      if (!response.ok) throw new Error("Image upload failed");
+      if (!response.ok) throw new Error("Image Upload Failed!");
 
       const data = await response.json();
       uploadedUrls.push(data.secure_url);
     }
 
-    return uploadedUrls; // Array of uploaded image URLs
+    return uploadedUrls;
   } catch (error) {
     console.error("Error uploading images:", error);
     return null;

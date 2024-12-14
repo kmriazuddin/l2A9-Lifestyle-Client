@@ -1,15 +1,19 @@
 "use client";
-
+// import config from "@/config";
 import React, { useState } from "react";
 import Image from "next/image";
+import { IShop } from "@/interface/shop.interface";
+import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { User2 } from "lucide-react";
-import { useAllVendorShop } from "@/src/hooks/shop.hook";
-import { IShop } from "@/src/interface/shop.interface";
-import { Button } from "@/src/components/ui/button";
-import { DynamicPagination } from "@/src/components/ui_component/common/Pagination/DynamicPagination";
+import { useAllVendorShop } from "@/hooks/shop.hook";
+import { DynamicPagination } from "@/components/ui_component/common/Pagination/DynamicPagination";
 
 const ShopList = () => {
+  // const res = await fetch(`${config.backendApi}/shop/get-all-shop`, {
+  //   cache: "no-store",
+  // });
+  // const { data } = await res.json();
   const [currentPage, setCurrentPage] = useState(1);
   const { data } = useAllVendorShop(currentPage);
   const handlePageChange = (page: number) => {

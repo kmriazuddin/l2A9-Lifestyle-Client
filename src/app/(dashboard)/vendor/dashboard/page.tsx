@@ -1,6 +1,5 @@
 "use client";
-
-import { useGetVendorDashboard } from "@/src/hooks/dashboard";
+import { useGetVendorDashboard } from "@/hooks/dashboard";
 import React from "react";
 import { FaShopify, FaBox, FaCheckCircle, FaDollarSign } from "react-icons/fa";
 

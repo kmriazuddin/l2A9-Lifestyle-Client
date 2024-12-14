@@ -1,6 +1,6 @@
-import { DialogClose } from "@/src/components/ui/dialog";
-import { ModalBox } from "@/src/components/ui_component/common/modal/ModalBox";
-import { useDeleteCategory } from "@/src/hooks/category.hook";
+import { DialogClose } from "@/components/ui/dialog";
+import { Modalbox } from "@/components/ui_component/common/modal/Modalbox";
+import { useDeleteCategory } from "@/hooks/category.hook";
 import React from "react";
 import { toast } from "sonner";
 
@@ -17,7 +17,7 @@ const DeleteCategory = ({ id }: { id: string }) => {
     });
   };
   return (
-    <ModalBox
+    <Modalbox
       btncss="hover:text-red-500"
       title="Are you sure?"
       btnIcon={
@@ -45,7 +45,7 @@ const DeleteCategory = ({ id }: { id: string }) => {
           <p className="bg-gray-950 text-white rounded-md w-20 py-2">No</p>
         </DialogClose>
       </div>
-    </ModalBox>
+    </Modalbox>
   );
 };
 

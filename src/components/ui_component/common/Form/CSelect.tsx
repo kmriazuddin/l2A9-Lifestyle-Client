@@ -1,5 +1,4 @@
 import React from "react";
-import { Controller, useFormContext } from "react-hook-form";
 import {
   Select,
   SelectContent,
@@ -7,8 +6,9 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/src/components/ui/select";
-import { Label } from "@/src/components/ui/label";
+} from "@/components/ui/select";
+import { Label } from "@/components/ui/label";
+import { Controller, useFormContext } from "react-hook-form";
 
 interface SelectProps {
   name: string;

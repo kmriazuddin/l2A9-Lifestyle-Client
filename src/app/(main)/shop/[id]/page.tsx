@@ -1,13 +1,14 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
+import config from "@/config";
+import { IShop } from "@/interface/shop.interface";
+
 import Image from "next/image";
 import React from "react";
 
 import FollowAction from "./FollowAction";
 import { User2 } from "lucide-react";
-import config from "@/src/config";
-import { IShop } from "@/src/interface/shop.interface";
-import AllProduct from "@/src/components/ui_component/common/AllProduct/AllProduct";
+import AllProduct from "@/components/ui_component/common/AllProduct/AllProduct";
 
 const ShopDetailsPage = async ({ params }: { params: any }) => {
   const { id } = await params;

@@ -1,8 +1,8 @@
-import CButton from "@/src/components/ui_component/common/Form/CButton";
-import CForm from "@/src/components/ui_component/common/Form/CForm";
-import CInput from "@/src/components/ui_component/common/Form/CInput";
-import { ModalBox } from "@/src/components/ui_component/common/modal/ModalBox";
-import { useReplyRating } from "@/src/hooks/rating.hook";
+import CButton from "@/components/ui_component/common/Form/CButton";
+import CForm from "@/components/ui_component/common/Form/CForm";
+import CInput from "@/components/ui_component/common/Form/CInput";
+import { Modalbox } from "@/components/ui_component/common/modal/Modalbox";
+import { useReplyRating } from "@/hooks/rating.hook";
 import React from "react";
 import { FieldValues } from "react-hook-form";
 import { toast } from "sonner";
@@ -24,14 +24,14 @@ const Reply = ({ id }: { id: string }) => {
   };
   return (
     <div>
-      <ModalBox title="Reply to Customer" btnText="Reply">
+      <Modalbox title="Reply to Customer" btnText="Reply">
         <CForm onFromSubmit={onFormSubmit}>
           <div className="grid gap-2">
             <CInput name="vendorReply" label="Reply"></CInput>
             <CButton type="submit" isPending={isPending} text="Reply"></CButton>
           </div>
         </CForm>
-      </ModalBox>
+      </Modalbox>
     </div>
   );
 };

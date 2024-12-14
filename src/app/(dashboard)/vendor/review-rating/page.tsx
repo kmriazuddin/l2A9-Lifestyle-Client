@@ -1,9 +1,8 @@
 "use client";
-
-import { useGetReviewByShop } from "@/src/hooks/rating.hook";
+import { useGetReviewByShop } from "@/hooks/rating.hook";
 import React, { useState } from "react";
 import ReviewTable from "./ReviewTable";
-import { DynamicPagination } from "@/src/components/ui_component/common/Pagination/DynamicPagination";
+import { DynamicPagination } from "@/components/ui_component/common/Pagination/DynamicPagination";
 
 const Page = () => {
   const [currentPage, setCurrentPage] = useState(1);

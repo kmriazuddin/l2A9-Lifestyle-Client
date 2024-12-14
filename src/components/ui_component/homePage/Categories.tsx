@@ -1,14 +1,14 @@
 "use client";
-
 import React from "react";
+// Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination } from "swiper/modules";
+// Import Swiper styles
 import "swiper/css";
-import Link from "next/link";
 import { useAllCategory } from "@/hooks/category.hook";
+import Link from "next/link";
 import { useAppDispatch } from "@/redux/hooks";
 import { setCategoryId } from "@/redux/features/cartSlice/cartSlice";
-
 const Categories = () => {
   const { data } = useAllCategory();
   const dispatch = useAppDispatch();

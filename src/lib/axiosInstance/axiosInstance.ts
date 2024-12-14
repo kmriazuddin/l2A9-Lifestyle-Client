@@ -1,5 +1,5 @@
 import config from "@/config";
-import { logout } from "@/service/authServices";
+import { logout } from "@/services/authService";
 import axios from "axios";
 import { cookies } from "next/headers";
 

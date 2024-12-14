@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+import { newFollow, removeFollow } from "@/services/followerService";
 import { useMutation } from "@tanstack/react-query";
-import { newFollow, removeFollow } from "../service/followerService";
 
 export const useFollowShop = () => {
   return useMutation<any, Error, string, unknown>({

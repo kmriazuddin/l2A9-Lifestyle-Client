@@ -1,5 +1,5 @@
 import { useState } from "react";
-import useDebounce from "../useDebounce";
+import useDebounce from "@/lib/utils/useDebounce";
 
 export const useFilterSortSearch = () => {
   const [searchTerm, setSearchTerm] = useState("");

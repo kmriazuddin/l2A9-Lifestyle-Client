@@ -1,6 +1,6 @@
+import config from "@/config";
 import React from "react";
 import CategorieAction from "./CategoryAction";
-import config from "@/src/config";
 
 const page = async () => {
   const res = await fetch(`${config.backendApi}/category`, {

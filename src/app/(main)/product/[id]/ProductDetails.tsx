@@ -1,21 +1,17 @@
 "use client";
-
+import { Button } from "@/components/ui/button";
+import CartConflict from "@/components/ui_component/common/cartConfilct/CartConflict";
+import AvarageRating from "@/components/ui_component/common/Rating/AvarageRating";
+import { useSingleProduct } from "@/hooks/product.hook";
+import { IProduct } from "@/interface/product.interface";
+import { addItemToCart, ICartItem } from "@/redux/features/cartSlice/cartSlice";
+import { useAppDispatch } from "@/redux/hooks";
 import Image from "next/image";
 
 import React, { useContext, useEffect, useState } from "react";
 import RelatedProducts from "./RelatedProducts";
 import Link from "next/link";
-import { useSingleProduct } from "@/src/hooks/product.hook";
-import { useAppDispatch } from "@/src/redux/hooks";
-import {
-  addItemToCart,
-  ICartItem,
-} from "@/src/redux/features/cartSlice/cartSlice";
-import { IProduct } from "@/src/interface/product.interface";
-import AverageRating from "@/src/components/ui_component/common/Rating/AverageRating";
-import { Button } from "@/src/components/ui/button";
-import CartConflict from "@/src/components/ui_component/common/CartConflict/CartConflict";
-import { AuthContext } from "@/src/providers/AuthProvider";
+import { AuthContext } from "@/providers/AuthProvider";
 
 const ProductDetails = ({ id }: { id: string }) => {
   const userData = useContext(AuthContext);
@@ -94,10 +90,10 @@ const ProductDetails = ({ id }: { id: string }) => {
             </Link>
           </h1>
           <div className="mt-2">
-            <AverageRating
+            <AvarageRating
               rating={product?.averageRating ? product.averageRating : 0}
               width={70}
-            ></AverageRating>{" "}
+            ></AvarageRating>{" "}
             <p className="text-sm font-medium">{`(${product?.totalReview} Customer review)`}</p>
           </div>
           <p className="text-gray-700 mt-3">{product?.description}</p>
@@ -207,10 +203,10 @@ const ProductDetails = ({ id }: { id: string }) => {
                 <div className="flex items-center justify-between">
                   <p className="font-medium">{review.customer?.name}</p>
                   <div className="flex">
-                    <AverageRating
+                    <AvarageRating
                       width={70}
                       rating={review?.rating}
-                    ></AverageRating>
+                    ></AvarageRating>
                   </div>
                 </div>
                 <p className="text-gray-600 m">{review.comment}</p>

@@ -1,11 +1,10 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-
 export interface IUser {
   userId: string;
   email: string;
   role: "CUSTOMER" | "VENDOR" | "ADMIN";
   isBlocked: boolean;
-  Admin: any[];
+  Admin: any[]; // Update this if you have a specific structure for Admin data
   vendor: IVendor | null;
   customer: ICustomer | null;
 }

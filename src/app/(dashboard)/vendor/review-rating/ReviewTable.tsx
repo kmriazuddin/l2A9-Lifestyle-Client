@@ -1,5 +1,4 @@
 import React from "react";
-import Image from "next/image";
 import {
   Table,
   TableBody,
@@ -8,9 +7,10 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@/src/components/ui/table";
-import { IReview } from "@/src/interface/review.interface";
-import AverageRating from "@/src/components/ui_component/common/Rating/AverageRating";
+} from "@/components/ui/table";
+import Image from "next/image";
+import { IReview } from "@/interface/review.interface";
+import AvarageRating from "@/components/ui_component/common/Rating/AvarageRating";
 import Reply from "./Replay";
 
 interface ReviewTableProps {
@@ -54,10 +54,10 @@ const ReviewTable: React.FC<ReviewTableProps> = ({ reviews }) => {
                 <TableCell>
                   <span> {review?.comment}</span>
                   <div className="mt-1">
-                    <AverageRating
+                    <AvarageRating
                       width={60}
                       rating={review?.rating}
-                    ></AverageRating>
+                    ></AvarageRating>
                   </div>
                 </TableCell>
                 <TableCell>{review?.vendorReply || "No Reply Yet"}</TableCell>

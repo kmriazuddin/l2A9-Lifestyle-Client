@@ -1,15 +1,16 @@
 "use client";
-
+import React from "react";
 import {
   Card,
   CardContent,
+  //   CardDescription,
+  //   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/src/components/ui/card";
-import { useFlashProduct } from "@/src/hooks/product.hook";
+} from "@/components/ui/card";
 import Image from "next/image";
 import Link from "next/link";
-
+import { useFlashProduct } from "@/hooks/product.hook";
 const FlashSale = () => {
   const { data: { data: product } = {} } = useFlashProduct();
   return (

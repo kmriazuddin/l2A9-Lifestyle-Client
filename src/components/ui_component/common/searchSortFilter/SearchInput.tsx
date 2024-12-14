@@ -1,5 +1,5 @@
-import { Input } from "@/src/components/ui/input";
 import React from "react";
+import { Input } from "@/components/ui/input";
 
 interface SearchInputProps {
   value: string;

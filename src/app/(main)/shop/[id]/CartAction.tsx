@@ -1,12 +1,8 @@
 "use client";
-
-import { Button } from "@/src/components/ui/button";
-import { IProduct } from "@/src/interface/product.interface";
-import {
-  addItemToCart,
-  ICartItem,
-} from "@/src/redux/features/cartSlice/cartSlice";
-import { useAppDispatch } from "@/src/redux/hooks";
+import { Button } from "@/components/ui/button";
+import { IProduct } from "@/interface/product.interface";
+import { addItemToCart, ICartItem } from "@/redux/features/cartSlice/cartSlice";
+import { useAppDispatch } from "@/redux/hooks";
 import React from "react";
 import { FaCartPlus } from "react-icons/fa";
 

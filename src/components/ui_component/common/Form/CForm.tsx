@@ -11,6 +11,8 @@ const CForm = ({ children, onFromSubmit }: FormProps) => {
   const methods = useForm();
   const onSubmit = async (data: FieldValues) => {
     await onFromSubmit(data);
+
+    //methods.reset();
   };
   return (
     <FormProvider {...methods}>

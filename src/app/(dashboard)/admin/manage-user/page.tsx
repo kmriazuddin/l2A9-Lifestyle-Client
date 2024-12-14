@@ -1,12 +1,11 @@
 "use client";
-
+import { useGetAllUser } from "@/hooks/user.hook";
 import React, { useState } from "react";
-import FilterSortSelect from "@/src/components/ui_component/common/searchSortFilter/FilterSortSelect";
-import { useGetAllUser } from "@/src/hooks/user.hook";
-import UserTable from "./userTable";
-import useDebounce from "@/src/lib/utils/useDebounce";
-import { DynamicPagination } from "@/src/components/ui_component/common/Pagination/DynamicPagination";
-import SearchInput from "@/src/components/ui_component/common/searchSortFilter/searchInput";
+import UserTable from "./UserTable";
+import SearchInput from "@/components/ui_component/common/searchSortFilter/SearchInput";
+import useDebounce from "@/lib/utils/useDebounce";
+import FilterSortSelect from "@/components/ui_component/common/searchSortFilter/FilterSortSelect";
+import { DynamicPagination } from "@/components/ui_component/common/Pagination/DynamicPagination";
 
 const ManageUser = () => {
   const [currentPage, setCurrentPage] = useState(1);

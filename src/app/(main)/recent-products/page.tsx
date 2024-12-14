@@ -1,7 +1,6 @@
 "use client";
-
-import AllProduct from "@/src/components/ui_component/common/AllProduct/AllProduct";
-import { IProduct } from "@/src/interface/product.interface";
+import AllProduct from "@/components/ui_component/common/AllProduct/AllProduct";
+import { IProduct } from "@/interface/product.interface";
 import React, { useEffect, useState } from "react";
 
 const Page = () => {

@@ -1,7 +1,7 @@
-import { DialogClose } from "@/src/components/ui/dialog";
-import { ModalBox } from "@/src/components/ui_component/common/modal/ModalBox";
-import { useCloneProduct } from "@/src/hooks/product.hook";
-import { IProduct } from "@/src/interface/product.interface";
+import { DialogClose } from "@/components/ui/dialog";
+import { Modalbox } from "@/components/ui_component/common/modal/Modalbox";
+import { useCloneProduct } from "@/hooks/product.hook";
+import { IProduct } from "@/interface/product.interface";
 import React from "react";
 import { toast } from "sonner";
 
@@ -20,7 +20,7 @@ const CloneModal = ({ data }: { data: Partial<IProduct> }) => {
   };
 
   return (
-    <ModalBox
+    <Modalbox
       size="icon"
       variant="outline"
       btncss="hover:text-red-500"
@@ -64,7 +64,7 @@ const CloneModal = ({ data }: { data: Partial<IProduct> }) => {
           <p className="bg-gray-950 text-white rounded-md w-20 py-2">No</p>
         </DialogClose>
       </div>
-    </ModalBox>
+    </Modalbox>
   );
 };
 

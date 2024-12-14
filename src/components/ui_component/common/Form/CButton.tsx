@@ -1,4 +1,4 @@
-import { Button } from "@/src/components/ui/button";
+import { Button } from "@/components/ui/button";
 import React from "react";
 interface ButtonProps {
   type: "button" | "submit" | "reset";

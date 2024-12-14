@@ -1,9 +1,10 @@
 "use client";
 
-import OrderTable from "@/src/components/ui_component/common/Order/OrderTable";
-import { DynamicPagination } from "@/src/components/ui_component/common/Pagination/DynamicPagination";
-import { useVendorSingleShopOrders } from "@/src/hooks/order.hook";
-import { useVendorShop } from "@/src/hooks/shop.hook";
+import OrderTable from "@/components/ui_component/common/Order/OrderTable";
+import { DynamicPagination } from "@/components/ui_component/common/Pagination/DynamicPagination";
+import { useVendorSingleShopOrders } from "@/hooks/order.hook";
+import { useVendorShop } from "@/hooks/shop.hook";
+
 import React, { useEffect, useState } from "react";
 
 const Page = () => {

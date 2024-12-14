@@ -1,15 +1,14 @@
 "use client";
-
-import CButton from "@/src/components/ui_component/common/Form/CButton";
-import CForm from "@/src/components/ui_component/common/Form/CForm";
-import CGroupCheckbox from "@/src/components/ui_component/common/Form/CGroupCheckbox";
-import CImageInput from "@/src/components/ui_component/common/Form/CImage";
-import CInput from "@/src/components/ui_component/common/Form/CInput";
-import { ModalBox } from "@/src/components/ui_component/common/modal/ModalBox";
-import { useUpdateProduct } from "@/src/hooks/product.hook";
-import { IProduct } from "@/src/interface/product.interface";
-import { filterAndConvertFields } from "@/src/lib/utils/filterEmptyObject";
-import { uploadImagesToCloudinary } from "@/src/lib/utils/uploadImageArray";
+import CButton from "@/components/ui_component/common/Form/CButton";
+import CForm from "@/components/ui_component/common/Form/CForm";
+import CGroupCheckbox from "@/components/ui_component/common/Form/CGroupCheckbox";
+import CImageInput from "@/components/ui_component/common/Form/CImage";
+import CInput from "@/components/ui_component/common/Form/CInput";
+import { Modalbox } from "@/components/ui_component/common/modal/Modalbox";
+import { useUpdateProduct } from "@/hooks/product.hook";
+import { IProduct } from "@/interface/product.interface";
+import { filterAndConvertFields } from "@/lib/utils/filterEmptyObject";
+import { uploadImagesToCloudinary } from "@/lib/utils/uploadImageArray";
 import React from "react";
 import { FieldValues } from "react-hook-form";
 import { toast } from "sonner";
@@ -47,7 +46,7 @@ const EditProduct = ({ product }: { product: IProduct }) => {
     }
   };
   return (
-    <ModalBox
+    <Modalbox
       size="icon"
       variant="outline"
       title="Edit Product Data"
@@ -115,7 +114,7 @@ const EditProduct = ({ product }: { product: IProduct }) => {
           <CButton isPending={isPending} text="Update" type="submit"></CButton>
         </div>
       </CForm>
-    </ModalBox>
+    </Modalbox>
   );
 };
 

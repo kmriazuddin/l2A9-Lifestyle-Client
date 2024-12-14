@@ -1,8 +1,7 @@
 "use client";
-
-import OrderTable from "@/src/components/ui_component/common/Order/OrderTable";
-import { DynamicPagination } from "@/src/components/ui_component/common/Pagination/DynamicPagination";
-import { useAllOrder } from "@/src/hooks/order.hook";
+import OrderTable from "@/components/ui_component/common/Order/OrderTable";
+import { DynamicPagination } from "@/components/ui_component/common/Pagination/DynamicPagination";
+import { useAllOrder } from "@/hooks/order.hook";
 import React, { useState } from "react";
 
 const Page = () => {

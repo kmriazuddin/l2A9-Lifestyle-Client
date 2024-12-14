@@ -1,9 +1,9 @@
 "use client";
+import { useSingleOrder } from "@/hooks/order.hook";
 import Image from "next/image";
 import React, { useContext } from "react";
-import { useSingleOrder } from "@/src/hooks/order.hook";
 import ReviewAction from "./ReviewAction";
-import { AuthContext } from "@/src/providers/AuthProvider";
+import { AuthContext } from "@/providers/AuthProvider";
 
 const OrderDetails = ({ id }: { id: string }) => {
   // Fetch the order details using the custom hook

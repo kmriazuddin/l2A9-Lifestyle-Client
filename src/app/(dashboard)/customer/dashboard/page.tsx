@@ -1,6 +1,6 @@
 "use client";
 
-import { useGetUserDashboard } from "@/src/hooks/dashboard";
+import { useGetUserDashboard } from "@/hooks/dashboard"; // Assuming you have this hook implemented
 import React from "react";
 import {
   FaShoppingCart,

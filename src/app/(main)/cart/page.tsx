@@ -2,17 +2,17 @@
 
 import React from "react";
 import Image from "next/image";
-import { toast } from "sonner";
-import { useAppDispatch, useAppSelector } from "@/src/redux/hooks";
-import { useMakeOrder } from "@/src/hooks/order.hook";
-import { useGetShopCoupon } from "@/src/hooks/coupon.hook";
+import { useAppSelector, useAppDispatch } from "@/redux/hooks";
+import { Button } from "@/components/ui/button";
 import {
   decreaseItem,
   increaseItem,
   setAdditionalDiscount,
   setCuponId,
-} from "@/src/redux/features/cartSlice/cartSlice";
-import { Button } from "@/src/components/ui/button";
+} from "@/redux/features/cartSlice/cartSlice";
+import { useMakeOrder } from "@/hooks/order.hook";
+import { toast } from "sonner";
+import { useGetShopCupon } from "@/hooks/Cupon.hook";
 
 const CartPage = () => {
   const dispatch = useAppDispatch();
@@ -27,7 +27,7 @@ const CartPage = () => {
     additionalDiscount,
     totalPriceBeforeDiscount,
   } = useAppSelector((state) => state.cartSlice);
-  const { data } = useGetShopCoupon(cartItems[0]?.shopId || "");
+  const { data } = useGetShopCupon(cartItems[0]?.shopId || "");
   const handleIncrement = (id: string, size: string) => {
     dispatch(increaseItem({ id, size }));
   };
@@ -37,13 +37,12 @@ const CartPage = () => {
   };
 
   const handleCheckout = () => {
-    // Map cart items to IOrderItem format
     const orderItems = cartItems.map((item) => ({
       productId: item.id,
       size: item.size || undefined,
       quantity: item.quantity,
       price: item.price,
-      discount: itemLevelDiscount || 0, // Use item-level discount if available
+      discount: itemLevelDiscount || 0,
       shopId: item.shopId,
     }));
 
@@ -59,7 +58,6 @@ const CartPage = () => {
       onSuccess: (res) => {
         toast.success("Redirecting to payment page...");
         const payLink = res?.data?.payLink;
-        // If payLink exists, redirect the user to the payment page
         if (payLink) {
           window.location.href = payLink;
         } else {
@@ -70,8 +68,6 @@ const CartPage = () => {
         toast.error("Failed to make order.");
       },
     });
-
-    // Send the orderRequest to your API or handle it as needed
   };
 
   const applyCupon = (discount: number, cuponId: string) => {
@@ -163,20 +159,18 @@ const CartPage = () => {
               Checkout
             </Button>
             <div className="mt-4 grid justify-items-center">
-              <p className="mb-1 font-medium">Available Cupon</p>
+              <p className="mb-1 font-medium">Available Coupon</p>
               {data?.data.map((code) => (
-                <>
+                <React.Fragment key={code.id}>
                   {cartItems.length > 0 && (
                     <Button
-                      key={code.id}
                       disabled={code.id === cuponId}
                       onClick={() => applyCupon(code.discount, code.id)}
                     >
-                      {" "}
-                      Code: &quot;{code.code}&quot; Discount: {code.discount}%{" "}
+                      Code: &quot;{code.code}&quot; Discount: {code.discount}%
                     </Button>
                   )}
-                </>
+                </React.Fragment>
               ))}
             </div>
           </div>

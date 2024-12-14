@@ -1,12 +1,12 @@
 "use client";
 import React, { useState } from "react";
 import OrderTable from "../../../../components/ui_component/common/Order/OrderTable";
-import { useSingleUserAllOrder } from "@/src/hooks/order.hook";
-import { DynamicPagination } from "@/src/components/ui_component/common/Pagination/DynamicPagination";
+import { useSigleUserAllOrder } from "@/hooks/order.hook";
+import { DynamicPagination } from "@/components/ui_component/common/Pagination/DynamicPagination";
 
 const Page = () => {
   const [currentPage, setCurrentPage] = useState(1);
-  const { data } = useSingleUserAllOrder(currentPage);
+  const { data } = useSigleUserAllOrder(currentPage);
 
   const handlePageChange = (page: number) => {
     setCurrentPage(page);

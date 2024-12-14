@@ -1,7 +1,7 @@
 "use client";
 
-import { Input } from "@/src/components/ui/input";
-import { Label } from "@/src/components/ui/label";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 import Image from "next/image";
 import React, { useState, ChangeEvent } from "react";
 import { useFormContext } from "react-hook-form";

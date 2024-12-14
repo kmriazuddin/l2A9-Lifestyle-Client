@@ -1,18 +1,15 @@
 "use client";
-
 import React from "react";
+// Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination } from "swiper/modules";
+// Import Swiper styles
 import "swiper/css";
+
 import Link from "next/link";
+import { IProduct } from "@/interface/product.interface";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import Image from "next/image";
-import { IProduct } from "@/src/interface/product.interface";
-import {
-  Card,
-  CardContent,
-  CardHeader,
-  CardTitle,
-} from "@/src/components/ui/card";
 
 const RelatedProducts = ({ product }: { product: IProduct[] }) => {
   return (

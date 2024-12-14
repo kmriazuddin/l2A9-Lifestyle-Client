@@ -1,7 +1,4 @@
 import React from "react";
-
-import Image from "next/image";
-import { toast } from "sonner";
 import {
   Table,
   TableBody,
@@ -10,11 +7,13 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@/src/components/ui/table";
-import { IUser } from "@/src/interface/user.interface";
-import { ModalBox } from "@/src/components/ui_component/common/modal/ModalBox";
-import { DialogClose } from "@/src/components/ui/dialog";
-import { useBlockUser, useDeleteUser } from "@/src/hooks/user.hook";
+} from "@/components/ui/table";
+import Image from "next/image";
+import { IUser } from "@/interface/user.interface";
+import { Modalbox } from "@/components/ui_component/common/modal/Modalbox";
+import { DialogClose } from "@/components/ui/dialog";
+import { useBlockUser, useDeleteUser } from "@/hooks/user.hook";
+import { toast } from "sonner";
 
 const UserTable = ({ users }: { users: IUser[] }) => {
   const { mutate: deleteSingleUser } = useDeleteUser();
@@ -83,7 +82,7 @@ const UserTable = ({ users }: { users: IUser[] }) => {
             </TableCell>
             <TableCell>
               <div className="flex gap-2">
-                <ModalBox
+                <Modalbox
                   btnIcon={
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -108,8 +107,8 @@ const UserTable = ({ users }: { users: IUser[] }) => {
                   >
                     Yes
                   </DialogClose>
-                </ModalBox>
-                <ModalBox
+                </Modalbox>
+                <Modalbox
                   btnIcon={
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -134,7 +133,7 @@ const UserTable = ({ users }: { users: IUser[] }) => {
                   >
                     Yes
                   </DialogClose>
-                </ModalBox>
+                </Modalbox>
               </div>
             </TableCell>
           </TableRow>

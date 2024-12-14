@@ -1,9 +1,8 @@
 "use client";
-
-import { Button } from "@/src/components/ui/button";
-import { useFollowShop, useUnfollowShop } from "@/src/hooks/follower.hook";
-import { IFollower, IShop } from "@/src/interface/shop.interface";
-import { AuthContext } from "@/src/providers/AuthProvider";
+import { Button } from "@/components/ui/button";
+import { useFollowShop, useUnfollowShop } from "@/hooks/follower.hook";
+import { IFollower, IShop } from "@/interface/shop.interface";
+import { AuthContext } from "@/providers/AuthProvider";
 import { HeartCrackIcon, HeartIcon } from "lucide-react";
 import React, { useContext } from "react";
 import { toast } from "sonner";

@@ -1,5 +1,6 @@
 "use client";
 
+import { getCurrentUser } from "@/services/authService";
 import { usePathname, useRouter } from "next/navigation";
 import React, {
   createContext,
@@ -9,7 +10,6 @@ import React, {
   useEffect,
   useState,
 } from "react";
-import { getCurrentUser } from "../service/authServices";
 
 interface IAuthUser {
   userEmail: string;

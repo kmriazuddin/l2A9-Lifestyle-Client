@@ -1,7 +1,4 @@
 import React from "react";
-
-import Image from "next/image";
-import { toast } from "sonner";
 import {
   Table,
   TableBody,
@@ -10,11 +7,13 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@/src/components/ui/table";
-import { IShop } from "@/src/interface/shop.interface";
-import { useBlockShop } from "@/src/hooks/shop.hook";
-import { DialogClose } from "@/src/components/ui/dialog";
-import { ModalBox } from "@/src/components/ui_component/common/modal/ModalBox";
+} from "@/components/ui/table";
+import Image from "next/image";
+import { IShop } from "@/interface/shop.interface";
+import { DialogClose } from "@/components/ui/dialog";
+import { Modalbox } from "@/components/ui_component/common/modal/Modalbox";
+import { useBlockShop } from "@/hooks/shop.hook";
+import { toast } from "sonner";
 
 const ShopTable = ({ shopData }: { shopData: IShop[] }) => {
   const { mutate } = useBlockShop();
@@ -64,7 +63,7 @@ const ShopTable = ({ shopData }: { shopData: IShop[] }) => {
               )}
             </TableCell>
             <TableCell>
-              <ModalBox
+              <Modalbox
                 btnIcon={
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -89,7 +88,7 @@ const ShopTable = ({ shopData }: { shopData: IShop[] }) => {
                 >
                   Yes
                 </DialogClose>
-              </ModalBox>
+              </Modalbox>
             </TableCell>
           </TableRow>
         ))}

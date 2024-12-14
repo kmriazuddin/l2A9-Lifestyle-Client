@@ -1,6 +1,5 @@
 "use client";
-
-import { Input } from "@/components/ui/input";
+import React from "react";
 import {
   Select,
   SelectContent,
@@ -9,7 +8,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import React from "react";
+import { Input } from "@/components/ui/input";
 
 interface SearchSortFilterProps {
   searchTerm: string;

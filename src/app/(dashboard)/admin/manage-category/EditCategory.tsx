@@ -1,7 +1,7 @@
-import CForm from "@/src/components/ui_component/common/Form/CForm";
-import CInput from "@/src/components/ui_component/common/Form/CInput";
-import { ModalBox } from "@/src/components/ui_component/common/modal/ModalBox";
-import { useUpdateCategory } from "@/src/hooks/category.hook";
+import CForm from "@/components/ui_component/common/Form/CForm";
+import CInput from "@/components/ui_component/common/Form/CInput";
+import { Modalbox } from "@/components/ui_component/common/modal/Modalbox";
+import { useUpdateCategory } from "@/hooks/category.hook";
 import { DialogClose } from "@radix-ui/react-dialog";
 import React from "react";
 import { FieldValues } from "react-hook-form";
@@ -23,7 +23,7 @@ const EditCategory = ({ id }: { id: string }) => {
     );
   };
   return (
-    <ModalBox
+    <Modalbox
       title="Edit Product Data"
       btncss="hover:text-green-500"
       btnIcon={
@@ -62,7 +62,7 @@ const EditCategory = ({ id }: { id: string }) => {
           </DialogClose>
         </div>
       </CForm>
-    </ModalBox>
+    </Modalbox>
   );
 };
 

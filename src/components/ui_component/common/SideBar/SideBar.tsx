@@ -1,6 +1,6 @@
 "use client";
 
-import { Dialog, DialogTitle } from "@/src/components/ui/dialog";
+import { Dialog, DialogTitle } from "@/components/ui/dialog";
 import {
   Sidebar,
   SidebarContent,
@@ -10,8 +10,8 @@ import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
-} from "@/src/components/ui/sidebar";
-import { AuthContext } from "@/src/providers/AuthProvider";
+} from "@/components/ui/sidebar";
+import { AuthContext } from "@/providers/AuthProvider";
 import { DialogContent } from "@radix-ui/react-dialog";
 import {
   ShoppingBag,
@@ -42,14 +42,12 @@ const items = [
     roles: ["ADMIN", "SUPERADMIN"],
   },
   {
-    title: "User Management",
     roles: ["ADMIN", "SUPERADMIN"],
     child: [
       { url: "/admin/manage-user", title: "Manage User", icon: Settings },
     ],
   },
   {
-    title: "Shop Management",
     roles: ["ADMIN", "SUPERADMIN"],
     child: [
       {
@@ -60,7 +58,6 @@ const items = [
     ],
   },
   {
-    title: "Product-Category Management",
     roles: ["ADMIN", "SUPERADMIN"],
     child: [
       {
@@ -71,7 +68,6 @@ const items = [
     ],
   },
   {
-    title: "Order Management",
     roles: ["ADMIN", "SUPERADMIN"],
     child: [
       { url: "/admin/view-order", title: "All Order", icon: ListOrdered },
@@ -83,7 +79,7 @@ const items = [
     ],
   },
 
-  // vendor links
+  // Vendor
   {
     title: "Dashboard",
     url: "/vendor/dashboard",
@@ -91,7 +87,6 @@ const items = [
     roles: ["VENDOR"],
   },
   {
-    title: "Shop Management",
     roles: ["VENDOR"],
     child: [
       { url: "/vendor/manage-shop", title: "Manage Shop", icon: Settings },
@@ -99,7 +94,6 @@ const items = [
     ],
   },
   {
-    title: "Order Management",
     roles: ["VENDOR"],
     child: [
       {
@@ -110,7 +104,6 @@ const items = [
     ],
   },
   {
-    title: "Review Management",
     roles: ["VENDOR"],
     child: [
       {
@@ -128,7 +121,6 @@ const items = [
     roles: ["CUSTOMER"],
   },
   {
-    title: "Order Management",
     roles: ["CUSTOMER"],
     child: [
       {
@@ -154,11 +146,10 @@ export default function AppSidebar() {
           <DialogContent>
             <DialogTitle></DialogTitle>
           </DialogContent>
-
           <SidebarGroup>
-            <SidebarGroupLabel>NEXT MART</SidebarGroupLabel>
+            <SidebarGroupLabel>FinsX Shop Bangladesh</SidebarGroupLabel>
             <SidebarGroupContent>
-              <SidebarMenu className="ms-2 ">
+              <SidebarMenu className="ms-2">
                 {filteredItems.map((item) => (
                   <div key={item.title}>
                     {/* Parent Item */}
@@ -176,7 +167,6 @@ export default function AppSidebar() {
                     {/* Child Items */}
                     {item.child && (
                       <>
-                        <SidebarGroupLabel>{item.title}</SidebarGroupLabel>
                         {item.child.map((child) => (
                           <SidebarMenuItem key={child.title}>
                             <SidebarMenuButton asChild>

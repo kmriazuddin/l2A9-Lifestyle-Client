@@ -1,13 +1,12 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 "use client";
-
 import React, { useState, useEffect } from "react";
-import AllProduct from "../common/AllProduct/AllProduct";
-import { useAllCategory } from "@/hooks/category.hook";
+import AllProduct from "../../../components/ui_component/common/AllProduct/AllProduct";
 import { useAllProduct } from "@/hooks/product.hook";
-import { IProduct } from "@/interface/product.interface";
+import { useAllCategory } from "@/hooks/category.hook";
 import { useFilterSortSearch } from "@/lib/utils/hook/useFilterSortSearch";
-import SearchSortFilter from "../common/searchSortFilter/SearchSortFilter";
+import SearchSortFilter from "@/components/ui_component/common/searchSortFilter/SearchSortFilter";
+import { IProduct } from "@/interface/product.interface";
 
 const Products = () => {
   const {
@@ -83,8 +82,14 @@ const Products = () => {
 
       <div className="mt-4">
         <AllProduct data={allProducts} />
-        {isLoading && <div className="loader">Loading more products...</div>}
-        {!hasMore && <div>No more products to load.</div>}
+        {isLoading && (
+          <div className="loader">
+            <div className="flex justify-center items-center m-auto">
+              <span className="loading loading-spinner loading-lg text-info"></span>
+            </div>
+          </div>
+        )}
+        {!hasMore && <div className="flex justify-center">No More Products</div>}
       </div>
     </div>
   );

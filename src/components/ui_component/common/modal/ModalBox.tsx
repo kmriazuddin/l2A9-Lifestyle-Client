@@ -7,9 +7,10 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
+
 import { ReactNode } from "react";
 
-export function ModalBox({
+export function Modalbox({
   btncss,
   title,
   descrip,

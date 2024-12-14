@@ -1,14 +1,15 @@
 "use client";
 
-import CButton from "@/src/components/ui_component/common/Form/CButton";
-import CForm from "@/src/components/ui_component/common/Form/CForm";
-import CInput from "@/src/components/ui_component/common/Form/CInput";
-import CSelect from "@/src/components/ui_component/common/Form/CSelect";
-import { useUserRegistration } from "@/src/hooks/auth.hook";
-import { IUserToken } from "@/src/interface/token.interface";
-import { AuthContext } from "@/src/providers/AuthProvider";
+import CButton from "@/components/ui_component/common/Form/CButton";
+import CForm from "@/components/ui_component/common/Form/CForm";
+import CInput from "@/components/ui_component/common/Form/CInput";
+import CSelect from "@/components/ui_component/common/Form/CSelect";
+import { useUserRegistration } from "@/hooks/auth.hook";
+import { IUserToken } from "@/interface/tokent.interface";
+import { AuthContext } from "@/providers/AuthProvider";
 import { jwtDecode } from "jwt-decode";
 import { ArrowRight } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import React, { useContext } from "react";
@@ -19,6 +20,7 @@ const SignupPage = () => {
   const router = useRouter();
   const { mutate, isPending } = useUserRegistration();
   const auth = useContext(AuthContext);
+
   const onFromSubmit = async (data: FieldValues) => {
     mutate(data, {
       onSuccess: async (data) => {
@@ -33,16 +35,16 @@ const SignupPage = () => {
       },
       onError: (error) => {
         console.log(error);
-        toast.success("Something Went Wrong");
+        toast.success("Something Went Wrong!");
       },
     });
   };
+  
   return (
-    <div className="w-full h-screen flex justify-center items-center px-4">
-      <div className="w-96 ">
+    <div className="w-full h-screen flex justify-center md:justify-evenly items-center px-4">
+      <div className="w-96 border p-5 lg:p-10">
         <CForm onFromSubmit={onFromSubmit}>
           <div className="grid gap-3">
-            {" "}
             <CInput name="email" label="Email" type="email"></CInput>
             <CInput name="name" label="Name" type="text"></CInput>
             <CInput name="address" label="Address" type="text"></CInput>
@@ -55,7 +57,7 @@ const SignupPage = () => {
                 { value: "VENDOR", label: "Seller" },
               ]}
               name="accountType"
-              label="Open account as:"
+              label="Your Account"
             ></CSelect>
             <CButton
               isPending={isPending}
@@ -63,17 +65,27 @@ const SignupPage = () => {
               type="submit"
             ></CButton>
           </div>
-        </CForm>{" "}
+        </CForm>
         <div className="flex justify-end">
-          <Link href={"/login"} className=" flex font-medium w-fit mt-2">
-            {" "}
-            <span className=" gap-2 ">Go to Login page </span>{" "}
+          <Link
+            href={"/login"}
+            className="flex font-medium w-fit mt-2 hover:underline hover:text-blue-500"
+          >
+            <span className="gap-2">Already have an account?</span>
             <span className="mt-1">
-              {" "}
               <ArrowRight size={17} />
             </span>
           </Link>
         </div>
+      </div>
+      <div className="p-2">
+        <Image
+          width={400}
+          height={300}
+          src={`https://i.ibb.co.com/yfwfG4n/login.png`}
+          alt={"login"}
+          className="hidden md:block lg:block"
+        />
       </div>
     </div>
   );

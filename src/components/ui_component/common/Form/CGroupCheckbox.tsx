@@ -1,5 +1,5 @@
-import { Checkbox } from "@/src/components/ui/checkbox";
-import { Label } from "@/src/components/ui/label";
+import { Checkbox } from "@/components/ui/checkbox"; // Ensure Checkbox supports React Hook Form integration
+import { Label } from "@/components/ui/label";
 import React from "react";
 import { useFormContext, Controller } from "react-hook-form";
 

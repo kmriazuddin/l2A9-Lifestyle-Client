@@ -1,9 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { useMutation, useQuery } from "@tanstack/react-query";
-import { FieldValues } from "react-hook-form";
-import { IApiResponse } from "../interface/apiResponse.interface";
-import { IDiscount, IProduct } from "../interface/product.interface";
-import { queryClient } from "../providers/Providers";
+import { IApiResponse } from "@/interface/apiResponse.interface";
+import { IDiscount, IProduct } from "@/interface/product.interface";
+import { queryClient } from "@/providers/Provider";
 import {
   addProduct,
   allProduct,
@@ -12,7 +10,9 @@ import {
   flashProduct,
   singleProduct,
   updateProduct,
-} from "../service/product";
+} from "@/services/product";
+import { useMutation, useQuery } from "@tanstack/react-query";
+import { FieldValues } from "react-hook-form";
 
 export const useAddProduct = () => {
   return useMutation<any, Error, FieldValues, unknown>({

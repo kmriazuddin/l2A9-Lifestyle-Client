@@ -1,24 +1,25 @@
 "use client";
 
-import { FieldValues } from "react-hook-form";
-import { toast } from "sonner";
+import React from "react";
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/src/components/ui/card";
-import CForm from "@/src/components/ui_component/common/Form/CForm";
-import CGroupCheckbox from "@/src/components/ui_component/common/Form/CGroupCheckbox";
-import CInput from "@/src/components/ui_component/common/Form/CInput";
-import CSelect from "@/src/components/ui_component/common/Form/CSelect";
-import CButton from "@/src/components/ui_component/common/Form/CButton";
-import { useAllCategory } from "@/src/hooks/category.hook";
-import { useVendorShop } from "@/src/hooks/shop.hook";
-import { uploadImagesToCloudinary } from "@/src/lib/utils/uploadImageArray";
-import { useAddProduct } from "@/src/hooks/product.hook";
-import CImageInput from "@/src/components/ui_component/common/Form/CImage";
+} from "@/components/ui/card";
+import CForm from "@/components/ui_component/common/Form/CForm";
+import CGroupCheckbox from "@/components/ui_component/common/Form/CGroupCheckbox";
+import { FieldValues } from "react-hook-form";
+import CButton from "@/components/ui_component/common/Form/CButton";
+import CInput from "@/components/ui_component/common/Form/CInput";
+import CSelect from "@/components/ui_component/common/Form/CSelect";
+import { useAllCategory } from "@/hooks/category.hook";
+import { useVendorShop } from "@/hooks/shop.hook";
+import { uploadImagesToCloudinary } from "@/lib/utils/uploadImageArray";
+import { toast } from "sonner";
+import { useAddProduct } from "@/hooks/product.hook";
+import CImageInput from "@/components/ui_component/common/Form/CImage";
 
 const AddProduct = () => {
   const { data } = useAllCategory();
@@ -34,23 +35,25 @@ const AddProduct = () => {
         { ...otherData, images: imageUrl },
         {
           onSuccess: () => {
-            toast.success("Product added.");
+            toast.success("Product added successfully!");
           },
           onError: () => {
-            toast.error("Something went wrong! Try again.");
+            toast.error("Something went wrong!");
           },
         }
       );
     } else {
-      toast.error("Something went wrong! Try again.");
+      toast.error("Something went wrong!");
     }
   };
 
   return (
     <Card className="w-full">
       <CardHeader>
-        <CardTitle>Create project</CardTitle>
-        <CardDescription>Deploy your new project in one-click.</CardDescription>
+        <CardTitle>Shop Product Add</CardTitle>
+        <CardDescription>
+          Experience Personalized Online Shopping in Bangladesh with FindXBD.
+        </CardDescription>
       </CardHeader>
 
       <CardContent className="">

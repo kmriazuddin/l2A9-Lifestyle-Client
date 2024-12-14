@@ -1,16 +1,16 @@
 "use client";
 
-import CButton from "@/src/components/ui_component/common/Form/CButton";
-import CForm from "@/src/components/ui_component/common/Form/CForm";
-import CInput from "@/src/components/ui_component/common/Form/CInput";
-import { useSetNewPass } from "@/src/hooks/auth.hook";
+import CButton from "@/components/ui_component/common/Form/CButton";
+import CForm from "@/components/ui_component/common/Form/CForm";
+import CInput from "@/components/ui_component/common/Form/CInput";
+import { useSetNewPass } from "@/hooks/auth.hook";
 import { useRouter, useSearchParams } from "next/navigation";
-import React, { Suspense } from "react"; // Import Suspense
+import React, { Suspense } from "react";
 import { FieldValues } from "react-hook-form";
 import { toast } from "sonner";
 
 const ResetPassword = () => {
-  const searchParams = useSearchParams(); // Access query params
+  const searchParams = useSearchParams();
   const router = useRouter();
 
   const token = searchParams.get("token");
@@ -20,13 +20,13 @@ const ResetPassword = () => {
 
   const onFormSubmit = async (data: FieldValues) => {
     if (data.password !== data.cPassword) {
-      toast.error("Password not matched.");
+      toast.error("Password not matched!");
     } else {
       changePassword(
         { token: token as string, password: data.password },
         {
           onSuccess: () => {
-            toast.success("Password reset successful.");
+            toast.success("Password reset successful!");
           },
           onError: (error) => {
             throw new Error(error.message);
@@ -38,8 +38,9 @@ const ResetPassword = () => {
 
   if (!token || !email) {
     router.push("/");
-    return null; // Prevent rendering if token or email is not present
+    return null;
   }
+
   return (
     <div>
       <div className="container mx-auto">

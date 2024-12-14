@@ -1,9 +1,5 @@
 "use client";
 import React, { useContext } from "react";
-import Image from "next/image";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { toast } from "sonner";
 import {
   Table,
   TableBody,
@@ -12,7 +8,10 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@/src/components/ui/table";
+} from "@/components/ui/table";
+import { IOrder } from "@/interface/order.interface";
+import Image from "next/image";
+import Link from "next/link";
 import {
   Select,
   SelectContent,
@@ -20,10 +19,11 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/src/components/ui/select";
-import { IOrder } from "@/src/interface/order.interface";
-import { AuthContext } from "@/src/providers/AuthProvider";
-import { useUpdateOrder } from "@/src/hooks/order.hook";
+} from "@/components/ui/select";
+import { usePathname } from "next/navigation";
+import { AuthContext } from "@/providers/AuthProvider";
+import { useUpdateOrder } from "@/hooks/order.hook";
+import { toast } from "sonner";
 
 const OrderTable = ({ orderData }: { orderData: IOrder[] }) => {
   const path = usePathname();
