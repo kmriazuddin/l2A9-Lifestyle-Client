@@ -10,13 +10,12 @@ const initialState: ComparisonState = {
   selectedProducts: [],
 };
 
-const comparisonSlice = createSlice({
-  name: "comparison",
+const compareSlice = createSlice({
+  name: "compareSlice",
   initialState,
   reducers: {
     addProductToComparison: (state, action: PayloadAction<IProduct>) => {
-      const { payload } = action;
-      const { productId, categoryId } = payload;
+      const { productId, categoryId } = action.payload;
 
       const isSameCategory =
         state.selectedProducts.length === 0 ||
@@ -35,8 +34,8 @@ const comparisonSlice = createSlice({
       } else if (state.selectedProducts.length >= 3) {
         toast.error("You can only compare up to 3 products.");
       } else {
-        state.selectedProducts.push(payload);
-        toast.success(`${payload.name} added to comparison.`);
+        state.selectedProducts.push(action.payload);
+        toast.success(`${action.payload.name} added to comparison.`);
       }
     },
     removeProductFromComparison: (state, action: PayloadAction<string>) => {
@@ -53,12 +52,8 @@ const comparisonSlice = createSlice({
       }
     },
     clearComparison: (state) => {
-      if (state.selectedProducts.length > 0) {
-        state.selectedProducts = [];
-        toast.success("Comparison list cleared.");
-      } else {
-        toast.error("Comparison list is already empty.");
-      }
+      state.selectedProducts = [];
+      toast.success("Comparison list cleared.");
     },
   },
 });
@@ -67,5 +62,5 @@ export const {
   addProductToComparison,
   removeProductFromComparison,
   clearComparison,
-} = comparisonSlice.actions;
-export default comparisonSlice.reducer;
+} = compareSlice.actions;
+export default compareSlice.reducer; // Ensure the reducer is exported

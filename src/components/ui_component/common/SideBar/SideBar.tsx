@@ -148,6 +148,7 @@ export default function AppSidebar() {
           </DialogContent>
           <SidebarGroup>
             <SidebarGroupLabel>FinsX Shop Bangladesh</SidebarGroupLabel>
+            <SidebarGroupLabel>{userData?.user?.userEmail}</SidebarGroupLabel>
             <SidebarGroupContent>
               <SidebarMenu className="ms-2">
                 {filteredItems.map((item) => (

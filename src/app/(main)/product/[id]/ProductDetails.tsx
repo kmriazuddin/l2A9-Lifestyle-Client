@@ -13,6 +13,7 @@ import RelatedProducts from "./RelatedProducts";
 import Link from "next/link";
 import { AuthContext } from "@/providers/AuthProvider";
 import { FaFire } from "react-icons/fa";
+import { MdDiscount } from "react-icons/md";
 
 const ProductDetails = ({ id }: { id: string }) => {
   const userData = useContext(AuthContext);
@@ -27,22 +28,19 @@ const ProductDetails = ({ id }: { id: string }) => {
   };
 
   const saveToRecentProducts = (product: IProduct) => {
-    // Get recent products from localStorage
     const recentProducts = JSON.parse(
       localStorage.getItem("recentProducts") || "[]"
     );
 
-    // Filter out duplicates
     const filteredProducts = recentProducts.filter(
       (p: IProduct) => p.productId !== product.productId
     );
 
-    // Add the new product at the start
     const updatedProducts = [product, ...filteredProducts].slice(0, 10);
 
-    // Save back to localStorage
     localStorage.setItem("recentProducts", JSON.stringify(updatedProducts));
   };
+
   useEffect(() => {
     if (product) {
       saveToRecentProducts(product);
@@ -51,7 +49,6 @@ const ProductDetails = ({ id }: { id: string }) => {
 
   return (
     <div className="max-w-7xl mx-auto px-4 py-8">
-      {/* Product Details Section */}
       {isLoading ? (
         <div className="flex justify-center items-center h-40">
           <div className="animate-spin rounded-full h-12 w-12 border-t-4 border-solid border-pink-600"></div>
@@ -59,7 +56,6 @@ const ProductDetails = ({ id }: { id: string }) => {
       ) : (
         <>
           <div className="flex flex-col lg:flex-row gap-8">
-            {/* Image Gallery */}
             <div className="flex flex-col gap-4 w-full lg:w-1/2">
               <div className="flex justify-center w-full md:px-5 lg:px-10">
                 {!!product?.name && (
@@ -87,12 +83,10 @@ const ProductDetails = ({ id }: { id: string }) => {
               </div>
             </div>
 
-            {/* Product Details */}
             <div className="w-full lg:w-1/2">
               <h1 className="text-3xl font-bold">{product?.name}</h1>
               <h1 className="text-sm text-zinc-600 hover:underline font-medium">
                 <Link href={`/shop/${product?.shopId}`}>
-                  {" "}
                   {product?.shop?.name}
                 </Link>
               </h1>
@@ -123,14 +117,12 @@ const ProductDetails = ({ id }: { id: string }) => {
                     {product?.flashSale[0].discount}% <FaFire></FaFire>
                   </span>
                   {!!product?.discounts && (
-                    <span className="text-xs ms-3  text-green-500">
-                      {product?.discounts}%
+                    <span className="text-xs ms-3 flex items-center gap-1 text-green-500">
+                      {product?.discounts}<MdDiscount />
                     </span>
                   )}
                 </p>
               )}
-
-              {/* Size Selection */}
               <div className="mt-6">
                 <h2 className="font-medium">Select Size:</h2>
                 <div className="flex gap-4 mt-2">

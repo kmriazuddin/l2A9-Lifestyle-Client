@@ -1,6 +1,6 @@
 "use client";
 
-import { useGetUserDashboard } from "@/hooks/dashboard"; // Assuming you have this hook implemented
+import { useGetUserDashboard } from "@/hooks/dashboard";
 import React from "react";
 import {
   FaShoppingCart,
@@ -17,10 +17,8 @@ const Dashboard = () => {
 
   if (isLoading) {
     return (
-      <div className="flex items-center justify-center h-screen">
-        <div className="text-lg font-semibold text-pink-500">
-          Loading dashboard...
-        </div>
+      <div className="flex justify-center items-center h-40">
+        <div className="animate-spin rounded-full h-12 w-12 border-t-4 border-solid border-pink-600"></div>
       </div>
     );
   }
@@ -43,7 +41,6 @@ const Dashboard = () => {
         Customer Dashboard
       </h1>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {/* Total Orders */}
         <div className="card bg-white text-gray-800 shadow-md rounded-lg p-6 hover:scale-105 transition-transform">
           <div className="flex items-center justify-between">
             <h2 className="text-xl font-semibold">Total Orders</h2>
@@ -53,8 +50,6 @@ const Dashboard = () => {
             {dashboardData?.totalOrders || 0}
           </p>
         </div>
-
-        {/* Total Spent */}
         <div className="card bg-white text-gray-800 shadow-md rounded-lg p-6 hover:scale-105 transition-transform">
           <div className="flex items-center justify-between">
             <h2 className="text-xl font-semibold">Total Spent</h2>
@@ -64,8 +59,6 @@ const Dashboard = () => {
             ${dashboardData?.totalSpent?.toFixed(2) || "0.00"}
           </p>
         </div>
-
-        {/* Total Discounts */}
         <div className="card bg-white text-gray-800 shadow-md rounded-lg p-6 hover:scale-105 transition-transform">
           <div className="flex items-center justify-between">
             <h2 className="text-xl font-semibold">Total Discounts</h2>
@@ -75,8 +68,6 @@ const Dashboard = () => {
             ${dashboardData?.totalDiscounts?.toFixed(2) || "0.00"}
           </p>
         </div>
-
-        {/* Orders by Status */}
         <div className="card bg-white text-gray-800 shadow-md rounded-lg p-6 hover:scale-105 transition-transform">
           <div className="flex items-center justify-between">
             <h2 className="text-xl font-semibold">Orders by Status</h2>
@@ -97,8 +88,6 @@ const Dashboard = () => {
               )}
           </ul>
         </div>
-
-        {/* Payment Status */}
         <div className="card bg-white text-gray-800 shadow-md rounded-lg p-6 hover:scale-105 transition-transform">
           <div className="flex items-center justify-between">
             <h2 className="text-xl font-semibold">Payment Status</h2>
@@ -119,8 +108,6 @@ const Dashboard = () => {
               )}
           </ul>
         </div>
-
-        {/* Followers */}
         <div className="card bg-white text-gray-800 shadow-md rounded-lg p-6 hover:scale-105 transition-transform">
           <div className="flex items-center justify-between">
             <h2 className="text-xl font-semibold">Total Shops Followed</h2>
@@ -130,8 +117,6 @@ const Dashboard = () => {
             {dashboardData?.totalFollowers || 0}
           </p>
         </div>
-
-        {/* Reviews */}
         <div className="card bg-white text-gray-800 shadow-md rounded-lg p-6 hover:scale-105 transition-transform">
           <div className="flex items-center justify-between">
             <h2 className="text-xl font-semibold">Total Reviews</h2>

@@ -11,10 +11,8 @@ const Dashboard = () => {
 
   if (isLoading) {
     return (
-      <div className="flex items-center justify-center h-screen">
-        <div className="text-lg font-semibold text-pink-500">
-          Loading dashboard...
-        </div>
+      <div className="flex justify-center items-center h-40">
+        <div className="animate-spin rounded-full h-12 w-12 border-t-4 border-solid border-pink-600"></div>
       </div>
     );
   }

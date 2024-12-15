@@ -14,7 +14,7 @@ import {
 const Shop = () => {
   const { data } = useVendorShop();
   const [selected, setSelected] = useState(data?.data[0]?.shopId || "");
-  const { data: { data: singleShop } = {} } = useVendorSingleShop(selected);
+  const { data: { data: singleShop } = {} } = useVendorSingleShop(selected, 1);
 
   useEffect(() => {
     if (data?.data[0]?.shopId) {

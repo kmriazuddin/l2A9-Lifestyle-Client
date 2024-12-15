@@ -1,5 +1,4 @@
 "use client";
-
 import React, { useContext, useEffect, useState } from "react";
 import AllProduct from "../../../components/ui_component/common/AllProduct/AllProduct";
 import { useAllProduct2 } from "@/hooks/product.hook";
@@ -28,7 +27,7 @@ const Page = () => {
   const { data: { data: category } = {} } = useAllCategory2();
   const [page, setPage] = useState(1);
 
-  const { data, isLoading, isFetching } = useAllProduct2(
+  const { data, isFetching } = useAllProduct2(
     debouncedSearchTerm || "",
     categoryId || "",
     sortCriteria || "",
@@ -37,11 +36,9 @@ const Page = () => {
 
   const dispatch = useAppDispatch();
   const { categoryId: storedCategoryId } = useAppSelector(
-    (state) => state?.cartSlice || {}
+    (state) => state.cartSlice
   );
-  const { selectedProducts = [] } = useAppSelector(
-    (state) => state?.compareSlice || {}
-  );
+  const { selectedProducts } = useAppSelector((state) => state.compareSlice);
 
   useEffect(() => {
     if (storedCategoryId) {
@@ -50,18 +47,16 @@ const Page = () => {
     }
   }, [storedCategoryId, setCategoryId, dispatch]);
 
-  // Loading Spinner
   if (isFetching) {
     return (
       <div className="flex justify-center items-center h-40">
-        <div className="animate-spin rounded-full h-12 w-12 border-t-4 border-solid border-gray-900"></div>
+        <div className="animate-spin rounded-full h-12 w-12 border-t-4 border-solid border-pink-600"></div>
       </div>
     );
   }
 
   return (
     <div>
-      {/* Search, Sort, Filter */}
       <div className="sm:mt-0 px-2">
         <SearchSortFilter
           searchTerm={searchTerm}
@@ -70,13 +65,12 @@ const Page = () => {
           onSortChange={setSortCriteria}
           categoryId={categoryId}
           onCategoryChange={setCategoryId}
-          categoryOptions={category || []} // Fallback to empty array
+          categoryOptions={category || []}
         />
-        <div className="flex gap-2 justify-between mb-5">
-          {/* Compare Products Link */}
+        <div className="flex gap-2 justify-between  mb-5 ">
           {userData?.user?.role === "CUSTOMER" &&
             selectedProducts.length > 0 && (
-              <div className="flex justify-end me-4">
+              <div className="flex  justify-end me-4">
                 <Link
                   href="/compare-product"
                   className="text-sm flex items-center gap-1 hover:underline underline-offset-2"
@@ -86,9 +80,8 @@ const Page = () => {
                 </Link>
               </div>
             )}
-          {/* Recently Viewed Link */}
           {userData?.user?.role === "CUSTOMER" && (
-            <div className="flex justify-end me-4">
+            <div className="flex  justify-end me-4">
               <Link
                 href="/recent-products"
                 className="text-sm flex items-center gap-1 hover:underline underline-offset-2"
@@ -101,7 +94,6 @@ const Page = () => {
         </div>
       </div>
 
-      {/* Product Listing */}
       <div>
         {data?.data?.length ? (
           <>
@@ -114,7 +106,7 @@ const Page = () => {
           </>
         ) : (
           <p className="font-medium text-zinc-500 text-center mt-10">
-            No Product to Display
+            No Product!
           </p>
         )}
       </div>
