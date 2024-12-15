@@ -4,11 +4,29 @@
 import axiosInstance from "@/lib/axiosInstance/axiosInstance";
 import { FieldValues } from "react-hook-form";
 
-export const getAllVendorShop = async (page: number) => {
+export const getAllVendorShop = async (page: number, searchTerm: string) => {
   try {
     const res = await axiosInstance.get(`/shop/get-all-shop`, {
       params: {
         page,
+        searchTerm,
+      },
+    });
+
+    return res?.data;
+  } catch (error: any) {
+    throw new Error(error?.response?.data?.message || error?.message || error);
+  }
+};
+export const getSingleVendorWithAllProduct = async (
+  id: string,
+  page: number
+) => {
+  try {
+    const res = await axiosInstance.get(`/shop/get-single-shop/${id}`, {
+      params: {
+        page,
+        limit: 12,
       },
     });
 
@@ -27,20 +45,28 @@ export const getVendorShop = async () => {
     throw new Error(error?.response?.data?.message || error?.message || error);
   }
 };
-export const getVendorSingleShop = async (id: string) => {
+export const getVendorSingleShop = async (id: string, page: number) => {
   try {
-    const res = await axiosInstance.get(`/shop/${id}`);
+    const res = await axiosInstance.get(`/shop/${id}`, {
+      params: {
+        page,
+      },
+    });
 
     return res?.data;
   } catch (error: any) {
     throw new Error(error?.response?.data?.message || error?.message || error);
   }
 };
-export const getVendorSingleShopOrders = async (id: string, page: number) => {
+export const getVendorSingleShopOrders = async (
+  status: string,
+  page: number
+) => {
   try {
-    const res = await axiosInstance.get(`/order/shop-order/${id}`, {
+    const res = await axiosInstance.get(`/order/shop-order`, {
       params: {
         page,
+        status,
       },
     });
 

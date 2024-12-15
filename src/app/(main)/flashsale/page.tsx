@@ -1,24 +1,24 @@
 "use client";
+
 import React from "react";
 import {
   Card,
   CardContent,
-  //   CardDescription,
-  //   CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
 import Image from "next/image";
 import Link from "next/link";
 import { useFlashProduct } from "@/hooks/product.hook";
+
 const FlashSale = () => {
   const { data: { data: product } = {} } = useFlashProduct();
   return (
     <div>
-      <p className="bg-black mx-2 rounded-md text-white text-center py-2 text-2xl font-medium underline  mt-1">
+      <p className="bg-pink-500 mx-2 rounded-md text-white text-center py-2 text-2xl font-medium mt-1">
         Flash Sale Products
       </p>
-      <div className="grid mt-2 justify-items-center xxs:grid-cols-2 xs:grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-7 xl:grid-cols-9 2xl:grid-cols-10 gap-2   mx-auto  overflow-hidden h-[470px]  gap-y-5  sm:h-[239px]">
+      <div className="grid mt-2 justify-items-center xxs:grid-cols-2 xs:grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-7 xl:grid-cols-9 2xl:grid-cols-10 gap-2 mx-auto overflow-hidden h-[470px] gap-y-5 sm:h-[239px]">
         {product?.map((productData, i) => (
           <Card key={i} className="w-32 h-fit m-0 p-0">
             <CardHeader className=" mb-0 pb-0  px-0 py-0">
@@ -33,18 +33,22 @@ const FlashSale = () => {
               </div>
               <CardTitle className="text-sm px-2">
                 <Link href={`/product/${productData.productId}`}>
-                  {" "}
-                  {productData.product.name}
+                  {productData.product.name.length > 11
+                    ? `${productData.product.name.slice(0, 11)}...`
+                    : productData.product.name}
                 </Link>
               </CardTitle>
             </CardHeader>
             <CardContent className="text-xs pt-0 mt-0 px-2 pb-2 ">
               <p className="text-base font-medium">
                 {productData.product.price -
-                  (productData.product.price * productData.discount) / 100}
+                  (productData.product.price * productData.discount) / 100}{" "}
+                Tk
               </p>
-              <p className="flex gap-4">
-                <span>{productData.product.price}</span>
+              <p className="flex gap-4 ">
+                <span className="line-through">
+                  {productData.product.price} Tk
+                </span>
                 <span>{productData.discount}%</span>
               </p>
             </CardContent>

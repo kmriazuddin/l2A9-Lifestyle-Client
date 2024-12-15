@@ -1,3 +1,5 @@
+"use client";
+
 import { IApiResponse } from "@/interface/apiResponse.interface";
 import { IUserDashboardData } from "@/interface/dashboard.interface";
 import {

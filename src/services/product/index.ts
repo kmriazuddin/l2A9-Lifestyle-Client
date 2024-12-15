@@ -52,6 +52,34 @@ export const allProduct = async ({
   }
 };
 
+export const allProduct2 = async ({
+  searchTerm,
+  categoryId,
+  sortCriteria: sort,
+  page,
+}: {
+  searchTerm: string;
+  categoryId: string;
+  sortCriteria: string;
+  page: number;
+}) => {
+  try {
+    const res = await axiosInstance.get(`/product`, {
+      params: {
+        searchTerm,
+        categoryId,
+        sort,
+        page,
+        limit: 12,
+      },
+    });
+
+    return res?.data;
+  } catch (error: any) {
+    throw new Error(error?.response?.data?.message || error?.message || error);
+  }
+};
+
 export const singleProduct = async (id: string) => {
   try {
     const res = await axiosInstance.get(`/product/${id}`);

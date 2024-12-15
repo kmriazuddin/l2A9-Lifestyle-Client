@@ -1,4 +1,5 @@
 "use client";
+
 import React, { useContext } from "react";
 import {
   Card,
@@ -7,25 +8,31 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { IProduct } from "@/interface/product.interface";
 import Image from "next/image";
-import { FaCartPlus } from "react-icons/fa";
-import { useAppDispatch } from "@/redux/hooks";
+import { FaCartPlus, FaFire } from "react-icons/fa";
+import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { addItemToCart, ICartItem } from "@/redux/features/cartSlice/cartSlice";
 import AvarageRating from "../Rating/AvarageRating";
-
 import CartConflict from "../cartConfilct/CartConflict";
 import { AuthContext } from "@/providers/AuthProvider";
+import { addProductToComparison } from "@/redux/features/compareSlice/compareSlice";
 
 const AllProduct = ({ data }: { data: IProduct[] }) => {
+  const selectedProducts = useAppSelector(
+    (state) => state?.compareSlice?.selectedProducts
+  );
   const dispatch = useAppDispatch();
   const handleAddToCart = (data: ICartItem) => {
     dispatch(addItemToCart(data));
   };
   const userData = useContext(AuthContext);
+  const handleCompare = (product: IProduct) => {
+    dispatch(addProductToComparison(product));
+  };
+
   return (
     <div className="container mx-auto mt-2">
       {" "}
@@ -65,7 +72,14 @@ const AllProduct = ({ data }: { data: IProduct[] }) => {
             </CardHeader>
             <CardContent className="text-sm mt-2 pb-1 ">
               <div className="flex justify-between items-center">
-                <p className="font-medium">{option.price}Tk</p>
+                <p className="font-medium flex items-center gap-2">
+                  <span>{option.price}Tk</span>
+                  <span className="text-xs flex items-center text-orange-400">
+                    {!!option?.flashSale?.length &&
+                      option?.flashSale[0].discount}
+                    % <FaFire></FaFire>
+                  </span>
+                </p>
                 <Button
                   disabled={userData?.user?.role !== "CUSTOMER"}
                   onClick={() =>
@@ -89,10 +103,35 @@ const AllProduct = ({ data }: { data: IProduct[] }) => {
                   <FaCartPlus></FaCartPlus>
                 </Button>
               </div>
-              <div className="flex justify-center">
+              <div
+                className={
+                  userData?.user
+                    ? "flex justify-between items-center"
+                    : "flex justify-center items-center"
+                }
+              >
+                {userData?.user && (
+                  <Button
+                    onClick={() => handleCompare(option)}
+                    disabled={selectedProducts?.some(
+                      (selectedProduct) =>
+                        selectedProduct.productId === option.productId
+                    )}
+                    size="sm"
+                    className="mt-2 mb-1"
+                  >
+                    {selectedProducts?.some(
+                      (selectedProduct) =>
+                        selectedProduct.productId === option.productId
+                    )
+                      ? "Selected"
+                      : "Compare"}
+                  </Button>
+                )}
+
                 <AvarageRating
                   rating={option?.averageRating ? option?.averageRating : 0}
-                  width={55}
+                  width={85}
                 ></AvarageRating>
               </div>
             </CardContent>

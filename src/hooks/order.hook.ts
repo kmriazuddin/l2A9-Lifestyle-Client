@@ -1,3 +1,4 @@
+"use client";
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { IApiResponse } from "@/interface/apiResponse.interface";
 import { IOrder } from "@/interface/order.interface";
@@ -17,13 +18,24 @@ export const useMakeOrder = () => {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   return useMutation<any, Error, any, unknown>({
     mutationFn: (data: any) => makePayment(data),
+    onSuccess: () => {
+      queryClient.invalidateQueries({
+        queryKey: ["user-all-order"],
+      });
+      queryClient.invalidateQueries({
+        queryKey: ["all-order"],
+      });
+      queryClient.invalidateQueries({
+        queryKey: ["pending-order"],
+      });
+    },
   });
 };
 
-export const useSigleUserAllOrder = (currentPage: number) => {
+export const useSigleUserAllOrder = (currentPage: number, status: string) => {
   return useQuery<IApiResponse<IOrder[]>>({
-    queryKey: ["user-all-order", currentPage],
-    queryFn: async () => await getSigleUserAllOrder(currentPage),
+    queryKey: ["user-all-order", currentPage, status],
+    queryFn: async () => await getSigleUserAllOrder(currentPage, status),
   });
 };
 
@@ -47,19 +59,23 @@ export const useUpdateOrder = () => {
   return useMutation<any, Error, string, unknown>({
     mutationFn: async (id: string) => await updateOrder(id),
     onSuccess: () => {
-      // Invalidate the "get-all-userdata" query to revalidate it
       queryClient.invalidateQueries({
-        queryKey: ["all-order", "pending-order"],
+        queryKey: ["user-all-order"],
+      });
+      queryClient.invalidateQueries({
+        queryKey: ["all-order"],
+      });
+      queryClient.invalidateQueries({
+        queryKey: ["pending-order"],
       });
     },
   });
 };
 
-export const useVendorSingleShopOrders = (id: string, page: number) => {
+export const useVendorSingleShopOrders = (status: string, page: number) => {
   return useQuery<IApiResponse<IOrder[]>>({
-    enabled: !!id,
-    queryKey: ["vendorSingleShopOrder", id, page],
-    queryFn: async () => await getVendorSingleShopOrders(id, page),
+    queryKey: ["vendorSingleShopOrder", status, page],
+    queryFn: async () => await getVendorSingleShopOrders(status, page),
   });
 };
 

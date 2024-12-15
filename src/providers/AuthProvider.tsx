@@ -38,7 +38,7 @@ const AuthProvider = ({ children }: { children: ReactNode }) => {
       setUser(currentUser);
     } catch (error) {
       console.error("Error fetching user:", error);
-      setUser(null); // Handle the case where user fetch fails
+      setUser(null);
     } finally {
       setIsLoading(false);
     }

@@ -1,4 +1,5 @@
 "use client";
+
 import React, { useContext } from "react";
 import {
   Table,
@@ -25,7 +26,13 @@ import { AuthContext } from "@/providers/AuthProvider";
 import { useUpdateOrder } from "@/hooks/order.hook";
 import { toast } from "sonner";
 
-const OrderTable = ({ orderData }: { orderData: IOrder[] }) => {
+const OrderTable = ({
+  orderData,
+  action = false,
+}: {
+  orderData: IOrder[];
+  action?: boolean;
+}) => {
   const path = usePathname();
   const userData = useContext(AuthContext);
   const { mutate } = useUpdateOrder();
@@ -41,7 +48,7 @@ const OrderTable = ({ orderData }: { orderData: IOrder[] }) => {
       });
     }
   };
-  console.log(orderData);
+
   return (
     <Table>
       <TableHeader>
@@ -56,10 +63,15 @@ const OrderTable = ({ orderData }: { orderData: IOrder[] }) => {
           <TableHead className="min-w-[150px]">Items</TableHead>
           <TableHead className="text-right">Subtotal</TableHead>
           <TableHead>Status</TableHead>
-          {userData?.user?.role == "ADMIN" ||
-            (userData?.user?.role == "SUPERADMIN" && (
-              <TableHead className="">Action</TableHead>
-            ))}
+          {action && (
+            <>
+              {" "}
+              {userData?.user?.role == "ADMIN" ||
+                (userData?.user?.role == "SUPERADMIN" && (
+                  <TableHead className="">Action</TableHead>
+                ))}
+            </>
+          )}
         </TableRow>
       </TableHeader>
       <TableBody>
@@ -96,44 +108,48 @@ const OrderTable = ({ orderData }: { orderData: IOrder[] }) => {
               ${order.subTotal.toFixed(2)}
             </TableCell>
             <TableCell>{order.status}</TableCell>
-            {userData?.user?.role == "ADMIN" ||
-              (userData?.user?.role == "SUPERADMIN" && (
-                <TableCell className="text-right">
-                  <Select
-                    onValueChange={(value) =>
-                      handleSelectChange(order.id, value)
-                    }
-                  >
-                    <SelectTrigger className="w-[180px]">
-                      <SelectValue placeholder="Update Status" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="not">Update Status</SelectItem>
-                      <SelectGroup>
-                        <SelectItem
-                          disabled={
-                            order.status === "ONGOING" ||
-                            order.status === "DELIVERED"
-                          }
-                          value="ONGOING"
-                        >
-                          {" "}
-                          ONGOING
-                        </SelectItem>
-                        <SelectItem
-                          value="DELIVERED"
-                          disabled={
-                            order.status === "DELIVERED" ||
-                            order.status === "PENDING"
-                          }
-                        >
-                          DELIVERED
-                        </SelectItem>
-                      </SelectGroup>
-                    </SelectContent>
-                  </Select>
-                </TableCell>
-              ))}
+            {action && (
+              <>
+                {userData?.user?.role == "ADMIN" ||
+                  (userData?.user?.role == "SUPERADMIN" && (
+                    <TableCell className="text-right">
+                      <Select
+                        onValueChange={(value) =>
+                          handleSelectChange(order.id, value)
+                        }
+                      >
+                        <SelectTrigger className="w-[180px]">
+                          <SelectValue placeholder="Update Status" />
+                        </SelectTrigger>
+                        <SelectContent>
+                          <SelectItem value="not">Update Status</SelectItem>
+                          <SelectGroup>
+                            <SelectItem
+                              disabled={
+                                order.status === "ONGOING" ||
+                                order.status === "DELIVERED"
+                              }
+                              value="ONGOING"
+                            >
+                              {" "}
+                              ONGOING
+                            </SelectItem>
+                            <SelectItem
+                              value="DELIVERED"
+                              disabled={
+                                order.status === "DELIVERED" ||
+                                order.status === "PENDING"
+                              }
+                            >
+                              DELIVERED
+                            </SelectItem>
+                          </SelectGroup>
+                        </SelectContent>
+                      </Select>
+                    </TableCell>
+                  ))}
+              </>
+            )}
           </TableRow>
         ))}
       </TableBody>

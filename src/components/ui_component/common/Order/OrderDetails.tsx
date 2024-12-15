@@ -1,4 +1,5 @@
 "use client";
+
 import { useSingleOrder } from "@/hooks/order.hook";
 import Image from "next/image";
 import React, { useContext } from "react";
@@ -6,14 +7,14 @@ import ReviewAction from "./ReviewAction";
 import { AuthContext } from "@/providers/AuthProvider";
 
 const OrderDetails = ({ id }: { id: string }) => {
-  // Fetch the order details using the custom hook
+
   const authData = useContext(AuthContext);
   const {
     data: { data: orderDetails } = {},
     isLoading,
     error,
   } = useSingleOrder(id);
-
+  console.log(orderDetails);
   if (isLoading)
     return (
       <div className="flex justify-center items-center h-screen">
@@ -121,14 +122,23 @@ const OrderDetails = ({ id }: { id: string }) => {
                     <span className="font-medium">Shop: {item.shop?.name}</span>
                   </p>
                 </div>
-                {authData?.user?.role == "CUSTOMER" && (
-                  <div className="mt-2 md:mt-0">
-                    <ReviewAction
-                      productId={item.productId}
-                      orderItemId={item.id}
-                    ></ReviewAction>
-                  </div>
-                )}
+                {authData?.user?.role == "CUSTOMER" &&
+                  status == "DELIVERED" && (
+                    <div className="mt-2 md:mt-0">
+                      {item.Review.map((info) => info.customer?.email).includes(
+                        authData.user.userEmail
+                      ) ? (
+                        <p className="bg-green-500 py-1 px-2 rounded-lg font-medium text-white">
+                          Review Given
+                        </p>
+                      ) : (
+                        <ReviewAction
+                          productId={item.productId}
+                          orderItemId={item.id}
+                        ></ReviewAction>
+                      )}
+                    </div>
+                  )}
               </div>
             ))}
           </div>

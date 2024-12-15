@@ -46,13 +46,12 @@ const CartPage = () => {
       shopId: item.shopId,
     }));
 
-    // Create the order request object
     const orderRequest = {
       items: orderItems,
       total: totalPriceBeforeDiscount,
       discounts: totalDiscount,
       subTotal: subTotal,
-      couponId: cuponId,
+      ...(!!cuponId && { couponId: cuponId }),
     };
     mutate(orderRequest, {
       onSuccess: (res) => {
@@ -64,7 +63,8 @@ const CartPage = () => {
           toast.error("Failed to retrieve payment link.");
         }
       },
-      onError: () => {
+      onError: (error) => {
+        console.log(error);
         toast.error("Failed to make order.");
       },
     });
@@ -159,18 +159,20 @@ const CartPage = () => {
               Checkout
             </Button>
             <div className="mt-4 grid justify-items-center">
-              <p className="mb-1 font-medium">Available Coupon</p>
+              <p className="mb-1 font-medium">Available Cupon</p>
               {data?.data.map((code) => (
-                <React.Fragment key={code.id}>
+                <>
                   {cartItems.length > 0 && (
                     <Button
+                      key={code.id}
                       disabled={code.id === cuponId}
                       onClick={() => applyCupon(code.discount, code.id)}
                     >
-                      Code: &quot;{code.code}&quot; Discount: {code.discount}%
+                      {" "}
+                      Code: &quot;{code.code}&quot; Discount: {code.discount}%{" "}
                     </Button>
                   )}
-                </React.Fragment>
+                </>
               ))}
             </div>
           </div>

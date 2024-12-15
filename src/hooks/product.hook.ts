@@ -1,3 +1,4 @@
+"use client";
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { IApiResponse } from "@/interface/apiResponse.interface";
 import { IDiscount, IProduct } from "@/interface/product.interface";
@@ -5,6 +6,7 @@ import { queryClient } from "@/providers/Provider";
 import {
   addProduct,
   allProduct,
+  allProduct2,
   cloneProduct,
   deleteProduct,
   flashProduct,
@@ -19,6 +21,11 @@ export const useAddProduct = () => {
     mutationFn: async (data: any) => await addProduct(data),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["vendorShopSingle"] });
+      queryClient.invalidateQueries({ queryKey: ["all-product"] });
+      queryClient.invalidateQueries({ queryKey: ["all-products"] });
+      queryClient.invalidateQueries({
+        queryKey: ["singleVendorWithAllProduct"],
+      });
     },
   });
 };
@@ -61,6 +68,21 @@ export const useAllProduct = (
     queryKey: ["all-product", searchTerm, categoryId, sortCriteria, page],
     queryFn: async () =>
       await allProduct({ searchTerm, categoryId, sortCriteria, page }),
+    refetchOnMount: true,
+    refetchOnWindowFocus: true,
+  });
+};
+
+export const useAllProduct2 = (
+  searchTerm: string,
+  categoryId: string,
+  sortCriteria: string,
+  page: number
+) => {
+  return useQuery<IApiResponse<IProduct[]>>({
+    queryKey: ["all-products", searchTerm, categoryId, sortCriteria, page],
+    queryFn: async () =>
+      await allProduct2({ searchTerm, categoryId, sortCriteria, page }),
   });
 };
 

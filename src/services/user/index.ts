@@ -40,3 +40,12 @@ export const deleteUser = async (id: string) => {
     throw new Error(error?.response?.data?.message || error?.message || error);
   }
 };
+
+export const updatePass = async (data: { password: string }) => {
+  try {
+    const res = await axiosInstance.patch(`/user/update-pass`, data);
+    return res?.data;
+  } catch (error: any) {
+    throw new Error(error?.response?.data?.message || error?.message || error);
+  }
+};
