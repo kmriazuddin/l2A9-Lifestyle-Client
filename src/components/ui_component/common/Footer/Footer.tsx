@@ -29,48 +29,26 @@ const Footer = () => {
         {/* Column 2: Quick Links */}
         <div>
           <h3 className="text-lg font-semibold mb-4">About Us</h3>
-          <div className="grid grid-cols-2">
+          <div className="">
             <ul className="space-y-2">
-              <li>
-                <Link href="" className="hover:underline">
-                  Affiliate Program
-                </Link>
-              </li>
               <li>
                 <Link href="" className="hover:underline">
                   Online Delivery
                 </Link>
               </li>
               <li>
-                <Link href="" className="hover:underline">
-                  Refund and Return Policy
-                </Link>
-              </li>
-              <li>
-                <Link href="" className="hover:underline">
+                <Link href="/blog" className="hover:underline">
                   Blog
                 </Link>
               </li>
-            </ul>
-            <ul className="space-y-2">
               <li>
-                <Link href="" className="hover:underline">
-                  EMI Terms
-                </Link>
-              </li>
-              <li>
-                <Link href="" className="hover:underline">
+                <Link href="/about" className="hover:underline">
                   About Us
                 </Link>
               </li>
               <li>
-                <Link href="" className="hover:underline">
+                <Link href="/contact" className="hover:underline">
                   Contact Us
-                </Link>
-              </li>
-              <li>
-                <Link href="" className="hover:underline">
-                  Terms and Conditions
                 </Link>
               </li>
             </ul>

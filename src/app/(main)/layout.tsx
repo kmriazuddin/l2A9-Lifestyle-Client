@@ -5,7 +5,7 @@ import React, { ReactNode } from "react";
 const layout = ({ children }: { children: ReactNode }) => {
   return (
     <div className="mx-auto max-w-screen-2xl">
-      <div className="h-12 bg-cyan-500 flex w-full items-center">
+      <div className="h-12 bg-cyan-500 flex w-full items-center sticky top-0 z-50">
         <NavbarUi></NavbarUi>
       </div>
       <div className="min-h-[calc(100vh-192px)]">{children}</div>

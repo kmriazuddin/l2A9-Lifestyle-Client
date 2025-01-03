@@ -57,6 +57,22 @@ const NavbarUi = () => {
       name: "Shops",
       link: "/shop",
     },
+    {
+      name: "Blog",
+      link: "/blog",
+    },
+    {
+      name: "Contact Us",
+      link: "/contact",
+    },
+    {
+      name: "Review",
+      link: "/review",
+    },
+    {
+      name: "About",
+      link: "/about",
+    },
     ...(userData?.user
       ? [
           {
